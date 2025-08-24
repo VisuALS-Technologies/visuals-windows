@@ -1,0 +1,131 @@
+﻿<local:AppletPage x:Class="VisuALS_WPF_App.NewBrowser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VisuALS_WPF_App"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="NewBrowser">
+
+    <local:VGrid x:Name="MainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="35*"></ColumnDefinition>
+            <ColumnDefinition Width="35*"></ColumnDefinition>
+            <ColumnDefinition Width="35*"></ColumnDefinition>
+            <ColumnDefinition Width="35*"></ColumnDefinition>
+            <ColumnDefinition Width="200*"></ColumnDefinition>
+            <ColumnDefinition Width="45*"></ColumnDefinition>
+            <ColumnDefinition Width="70*"></ColumnDefinition>
+            <ColumnDefinition Width="70*"></ColumnDefinition>
+            <ColumnDefinition Width="35*"></ColumnDefinition>
+            <ColumnDefinition Width="35*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"></RowDefinition>
+            <RowDefinition Height="60*"></RowDefinition>
+            <RowDefinition Height="40*"></RowDefinition>
+            <RowDefinition Height="225*"></RowDefinition>
+            <RowDefinition Height="40*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <local:VButton x:Name="GoBack"
+            Grid.Row="1"
+            Role="Navigation"
+            Content="🡨"
+            Click="GoBack_Click"/>
+
+        <local:VButton x:Name="GoForward"
+            Grid.Row="1"
+            Grid.Column="1"
+            Role="Navigation"
+            Content="🡪"
+            Click="GoForward_Click"/>
+
+        <local:VButton x:Name="Refresh"
+            Grid.Row="1"
+            Grid.Column="2"
+            Role="NotSpecified"
+            Content="⭯"
+            Click="Refresh_Click"/>
+
+        <local:VButton x:Name="StopLoading"
+            Grid.Row="1"
+            Grid.Column="3"
+            Role="Stop"
+            Content="❌"
+            Click="StopLoading_Click"/>
+
+        <local:VTextInput x:Name="url"
+            Grid.Row="1"
+            Grid.Column="4"
+            Role="SingleLine"/>
+
+        <local:VButton x:Name="Go"
+            Grid.Row="1"
+            Grid.Column="5"
+            Role="Submit"
+            Content="{DynamicResource wb_go}"
+            Click="Go_Click"/>
+
+        <local:VButton x:Name="AddBookmark"
+            Grid.Row="1"
+            Grid.Column="6"
+            Role="New"
+            Content="{DynamicResource wb_add_bookmark}"
+            Click="AddBookmark_Click"/>
+
+        <local:VButton x:Name="BookmarksBtn"
+            Grid.Row="1"
+            Grid.Column="7"
+            Role="Web"
+            Content="{DynamicResource wb_bookmarks}"
+            Click="Bookmarks_Click"/>
+
+        <local:VButton x:Name="DeleteBookmark"
+            Grid.Row="1"
+            Grid.Column="8"
+            Grid.ColumnSpan="2"
+            Role="Delete"
+            Content="{DynamicResource wb_delete_bookmark}"
+            Click="DeleteBookmark_Click"/>
+
+        <local:VButton x:Name="ScrollUpBtn"
+            Grid.Row="2"
+            Grid.Column="1"
+            Grid.ColumnSpan="8"
+            Role="Arrow"
+            Content="🠉"
+            Click="ScrollUpBtn_Click"/>
+
+        <local:VButton x:Name="ScrollDownBtn"
+            Grid.Row="4"
+            Grid.Column="1"
+            Grid.ColumnSpan="8"
+            Role="Arrow"
+            Content="🠋"
+            Click="ScrollDownBtn_Click"/>
+
+        <local:VButton x:Name="ScrollLeftBtn"
+            Grid.Row="2"
+            Grid.RowSpan="3"
+            Role="Arrow"
+            Content="🠈"
+            Click="ScrollLeftBtn_Click"/>
+
+        <local:VButton x:Name="ScrollRightBtn"
+            Grid.Row="2"
+            Grid.RowSpan="3"
+            Grid.Column="9"
+            Role="Arrow"
+            Content="🠊"
+            Click="ScrollRightBtn_Click"/>
+
+        <local:BrowserForFrame x:Name="browser"
+            Grid.Row="3"
+            Grid.RowSpan="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="8"/>
+
+    </local:VGrid>
+</local:AppletPage>

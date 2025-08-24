@@ -1,0 +1,96 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:VisuALS_WPF_App"
+                    xmlns:eyeX="clr-namespace:EyeXFramework.Wpf;assembly=EyeXFramework">
+
+    <Style TargetType="local:VButton" x:Key="DarkButtonStyle" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource Pewter}"/>
+    </Style>
+
+    <Style TargetType="local:VGrid" x:Key="DarkGridStyle" BasedOn="{StaticResource BaseGridStyle}">
+        <Style.Triggers>
+            <Trigger Property="Role" Value="MainGrid">
+                <Setter Property="Background" Value="{StaticResource Umbra}"/>
+            </Trigger>
+            <Trigger Property="Role" Value="DialogBox">
+                <Setter Property="Background" Value="{StaticResource Umbra}"/>
+            </Trigger>
+            <Trigger Property="Role" Value="ControlGrid">
+                <Setter Property="Background" Value="{StaticResource Umbra}"/>
+            </Trigger>
+            <Trigger Property="Role" Value="SubGrid">
+                <Setter Property="Background" Value="{StaticResource Obsidian}"/>
+                <Setter Property="Margin" Value="10"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Invisible">
+                <Setter Property="Background" Value="Transparent"/>
+            </Trigger>
+            <Trigger Property="Role" Value="NotSpecified">
+                <Setter Property="Background" Value="Transparent"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="local:VLabel" x:Key="DarkLabelStyle" BasedOn="{StaticResource BaseLabelStyle}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource Silver}"/>
+        <Style.Triggers>
+            <Trigger Property="Role" Value="Name">
+                <Setter Property="FontSize" Value="{DynamicResource BigFontSize}"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Title">
+                <Setter Property="FontSize" Value="{DynamicResource TitleFontSize}"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Header">
+                <Setter Property="FontSize" Value="{DynamicResource HeaderFontSize}"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Label">
+                <Setter Property="FontSize" Value="{DynamicResource NormalFontSize}"/>
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Emphasized">
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Deemphasized">
+                <Setter Property="FontStyle" Value="Italic"/>
+                <Setter Property="Foreground" Value="{StaticResource Iron}"/>
+                <Setter Property="FontSize" Value="{DynamicResource SmallFontSize}"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Hint">
+                <Setter Property="Padding" Value="18"/>
+                <Setter Property="FontStyle" Value="Italic"/>
+                <Setter Property="Foreground" Value="{StaticResource Pewter}"/>
+                <Setter Property="FontSize" Value="{DynamicResource NormalFontSize}"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Error">
+                <Setter Property="FontFamily" Value="Courier New"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Prompt">
+                <Setter Property="Background" Value="{StaticResource Pewter}"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Message">
+                <Setter Property="FontSize" Value="{DynamicResource BigFontSize}"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="local:VTextBlock" x:Key="DarkTextBlockStyle" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="Foreground" Value="{StaticResource Silver}"/>
+    </Style>
+
+    <Style TargetType="local:VTextInput" x:Key="DarkTextInputStyle" BasedOn="{StaticResource BaseTextInputStyle}">
+        <Setter Property="Background" Value="{StaticResource Pewter}"/>
+        <Setter Property="Foreground" Value="{StaticResource Silver}"/>
+    </Style>
+
+    <Style TargetType="local:VSeparator" x:Key="DarkSeparatorStyle" BasedOn="{StaticResource BaseSeparatorStyle}">
+        <Setter Property="Background" Value="{StaticResource Silver}"/>
+    </Style>
+
+</ResourceDictionary>

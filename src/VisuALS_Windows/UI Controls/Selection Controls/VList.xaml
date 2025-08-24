@@ -1,0 +1,44 @@
+﻿<local:VSelectionControl x:Class="VisuALS_WPF_App.VList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VisuALS_WPF_App"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <local:VGrid Role="ControlGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="PromptRow" Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition x:Name="NavCol" Width="1*"/>
+        </Grid.ColumnDefinitions>
+        
+        <local:VGrid x:Name="ListGrid"
+            Role="Invisible"
+            Grid.Row="1"
+            Grid.RowSpan="2"/>
+
+        <local:VLabel x:Name="promptLabel"
+            Role="Header"
+            Grid.ColumnSpan="2"
+            Content="{Binding Prompt, RelativeSource={RelativeSource AncestorType=local:VList}}"/>
+
+        <local:VButton x:Name="NextPage"
+            Role="Navigation"
+            Grid.Row="2"
+            Grid.Column="1"
+            Click="NextPage_Click"
+            Content="🠋"/>
+        
+        <local:VButton x:Name="PreviousPage"
+            Role="Navigation"
+            Grid.Row="1"
+            Grid.Column="1"
+            Click="PreviousPage_Click"
+            Content="🠉"/>
+    </local:VGrid>
+</local:VSelectionControl>

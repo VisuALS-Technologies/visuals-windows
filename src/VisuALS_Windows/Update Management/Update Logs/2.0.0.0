@@ -1,0 +1,7 @@
+﻿UI Overhauled to be more modern, consistent, and intuitive
+Added UI themes which can be changed in settings
+Notes/Web Browser/TTS have been dubbed "applets"
+Several new applets have been added
+The applet manager in settings let's you enable/disable applets
+Partial support for Spanish language
+Settings has been cleaned up

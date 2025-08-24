@@ -1,0 +1,269 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:VisuALS_WPF_App"
+                    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
+
+    <Style TargetType="local:VButton" x:Key="BaseButtonStyle">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:VButton">
+                    <Border Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}" 
+                            Margin="{TemplateBinding Margin}">
+                        <Grid>
+                            <Viewbox Stretch="Fill">
+                                <Border Width="50" Height="50">
+                                    <xctk:Pie Mode="Slice"
+                                                Slice="{TemplateBinding DwellIndicatorPercent}"
+                                                Width="100"
+                                                Height="100"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Fill="{StaticResource White}"
+                                                Opacity="0.5"/>
+                                </Border>
+                            </Viewbox>
+                            <StackPanel Orientation="Vertical"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Image Source="{TemplateBinding IconSource}"
+                                   Width="{TemplateBinding IconSize}"/>
+                                <TextBlock Text="{TemplateBinding Content}"
+                                       FontSize="{TemplateBinding FontSize}"
+                                       FontWeight="{TemplateBinding FontWeight}"
+                                       FontFamily="{TemplateBinding FontFamily}"
+                                       FontStyle="{TemplateBinding FontStyle}"
+                                       FontStretch="{TemplateBinding FontStretch}"
+                                       TextAlignment="Center"
+                                       TextWrapping="WrapWithOverflow"
+                                       Padding="{TemplateBinding Padding}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!--<Setter Property="eyeX:Behavior.GazeAware" Value="True" />
+        <Setter Property="eyeX:Behavior.GazeAwareDelay" Value="{DynamicResource DwellTime}" />-->
+        <Setter Property="FontSize" Value="{DynamicResource NormalFontSize}"/>
+        <Setter Property="BorderThickness" Value="5"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="IconSize" Value="50"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="CornerRadius" Value="15"/>
+        <Setter Property="Background" Value="{StaticResource Silver}"/>
+        <Setter Property="Padding" Value="5"/>
+        <Style.Triggers>
+
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.5"/>
+            </Trigger>
+
+            <Trigger Property="IsGazeOver" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource AccentColor}"/>
+            </Trigger>
+
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource AccentColor}"/>
+            </Trigger>
+
+            <Trigger Property="Role" Value="Selected">
+                <Setter Property="Background" Value="{StaticResource AccentColor}"/>
+            </Trigger>
+
+            <Trigger Property="Role" Value="Phantom">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="CornerRadius" Value="0"/>
+            </Trigger>
+            
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="BaseGridStyle" TargetType="local:VGrid">
+        <Style.Triggers>
+            <Trigger Property="Role" Value="MainGrid">
+                <Setter Property="Background" Value="{StaticResource White}"/>
+            </Trigger>
+            <Trigger Property="Role" Value="DialogBox">
+                <Setter Property="Background" Value="{StaticResource White}"/>
+            </Trigger>
+            <Trigger Property="Role" Value="ControlGrid">
+                <Setter Property="Background" Value="{StaticResource White}"/>
+            </Trigger>
+            <Trigger Property="Role" Value="SubGrid">
+                <Setter Property="Background" Value="{StaticResource Iron}"/>
+                <Setter Property="Margin" Value="10"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Invisible">
+                <Setter Property="Background" Value="Transparent"/>
+            </Trigger>
+            <Trigger Property="Role" Value="NotSpecified">
+                <Setter Property="Background" Value="Transparent"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="BaseLabelStyle" TargetType="local:VLabel">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="{DynamicResource NormalFontSize}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="20, 0, 20, 0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:VLabel">
+                    <Border Background="{TemplateBinding Background}" 
+                            BorderThickness="0"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <ContentPresenter/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Role" Value="Name">
+                <Setter Property="FontSize" Value="{DynamicResource BigFontSize}"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Title">
+                <Setter Property="FontSize" Value="{DynamicResource TitleFontSize}"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="Foreground" Value="{DynamicResource AccentColor}"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Header">
+                <Setter Property="FontSize" Value="{DynamicResource HeaderFontSize}"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Label">
+                <Setter Property="FontSize" Value="{DynamicResource NormalFontSize}"/>
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Emphasized">
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Deemphasized">
+                <Setter Property="FontStyle" Value="Italic"/>
+                <Setter Property="Foreground" Value="{StaticResource Umbra}"/>
+                <Setter Property="FontSize" Value="{DynamicResource SmallFontSize}"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Hint">
+                <Setter Property="Margin" Value="12"/>
+                <Setter Property="FontStyle" Value="Italic"/>
+                <Setter Property="Foreground" Value="{StaticResource Iron}"/>
+                <Setter Property="FontSize" Value="{DynamicResource NormalFontSize}"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Notification">
+                <Setter Property="Background" Value="{DynamicResource AccentColor}"/>
+                <Setter Property="FontSize" Value="{DynamicResource NormalFontSize}"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Error">
+                <Setter Property="FontFamily" Value="Courier New"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Prompt">
+                <Setter Property="Background" Value="{StaticResource Silver}"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Message">
+                <Setter Property="FontSize" Value="{DynamicResource BigFontSize}"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="BaseTextBlockStyle" TargetType="local:VTextBlock">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="{DynamicResource NormalFontSize}"/>
+        <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+        <Style.Triggers>
+            <Trigger Property="Role" Value="Quote">
+                <Setter Property="FontSize" Value="{DynamicResource BigFontSize}"/>
+                <Setter Property="FontStyle" Value="Italic"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Code">
+                <Setter Property="FontFamily" Value="Courier New"/>
+                <Setter Property="FontWeight" Value="Medium"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Compact">
+                <Setter Property="FontStretch" Value="Condensed"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Message">
+                <Setter Property="FontSize" Value="{DynamicResource BigFontSize}"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Notification">
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="BaseTextInputStyle" TargetType="local:VTextInput">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="{DynamicResource NormalFontSize}"/>
+        <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+        <Setter Property="Margin" Value="7"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="TextAlignment" Value="Left"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:VTextInput">
+                    <Border Background="{TemplateBinding Background}" 
+                            BorderBrush="{StaticResource Obsidian}" 
+                            BorderThickness="3"
+                            CornerRadius="25">
+                        <ScrollViewer  x:Name="PART_ContentHost"
+                                       FontSize="{TemplateBinding FontSize}"
+                                       FontWeight="{TemplateBinding FontWeight}"
+                                       FontFamily="{TemplateBinding FontFamily}"
+                                       FontStyle="{TemplateBinding FontStyle}"
+                                       FontStretch="{TemplateBinding FontStretch}"
+                                       Cursor="IBeam"
+                                       HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                       VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                       Background="Transparent"
+                                       BorderThickness="0"
+                                       Padding="{TemplateBinding Padding}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Role" Value="Code">
+                <Setter Property="FontFamily" Value="Courier New"/>
+                <Setter Property="TextWrapping" Value="NoWrap"/>
+            </Trigger>
+            <Trigger Property="Role" Value="TextBlock">
+            </Trigger>
+            <Trigger Property="Role" Value="SingleLine">
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="TextWrapping" Value="NoWrap"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style x:Key="BaseSeparatorStyle" TargetType="local:VSeparator">
+        <Setter Property="Background" Value="{StaticResource Pewter}"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Width" Value="5"/>
+        <Setter Property="Height" Value="5"/>
+        <Setter Property="CornerRadius" Value="2"/>
+        <Style.Triggers>
+            <Trigger Property="Orientation" Value="Vertical">
+                <Setter Property="Height" Value="{Binding Height, RelativeSource={RelativeSource AncestorType=UIElement}}"/>
+            </Trigger>
+            <Trigger Property="Orientation" Value="Horizontal">
+                <Setter Property="Width" Value="{Binding Width, RelativeSource={RelativeSource AncestorType=UIElement}}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

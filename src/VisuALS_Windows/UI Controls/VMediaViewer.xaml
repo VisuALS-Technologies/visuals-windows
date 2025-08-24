@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="VisuALS_WPF_App.VMediaViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VisuALS_WPF_App"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <local:VGrid Role="ControlGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="1*" x:Name="PlaybackCol"/>
+        </Grid.ColumnDefinitions>
+        <Border Background="{StaticResource Iron}"
+                Grid.ColumnSpan="2">
+        <local:VLabel x:Name="FileName"
+                      Role="Name"/>
+        </Border>
+        <local:VToggle x:Name="PlayPauseBtn"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           ColorOptions="True"
+                           TrueOptionRole="Pause"
+                           FalseOptionRole="Start"
+                           OptionSelected="PlayPauseBtn_OptionSelected"
+                           TrueOption="{StaticResource pb_pause}"
+                           FalseOption="{StaticResource pb_play}"/>
+        <local:VButton x:Name="ReplayBtn"
+                           Role="NotSpecified"
+                           Grid.Row="2"
+                           Grid.Column="1"
+                           Click="ReplayBtn_Click"
+                           Content="{StaticResource pb_replay}"/>
+        <local:VButton x:Name="StopBtn"
+                           Role="Stop"
+                           Grid.Row="3"
+                           Grid.Column="1"
+                           Click="StopBtn_Click"
+                           Content="{StaticResource pb_stop}"/>
+        <local:VGrid Role="Invisible"
+                     Margin="20"
+                     Grid.Row="1"
+                     Grid.RowSpan="3">
+            <MediaElement Name="mediaElem"
+                          LoadedBehavior="Manual"
+                          Visibility="Hidden"/>
+            <Image Name="imageElem"
+                   Visibility="Hidden"/>
+            <local:VScrollBox x:Name="textElem"
+                              Visibility="Hidden">
+                <local:VTextBlock Role="Text"/>
+            </local:VScrollBox>
+            <local:VGrid x:Name="noPreviewElem"
+                         Visibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <local:VLabel Role="Title"
+                              Grid.Row="0"
+                              Content="❔"/>
+                <local:VLabel Role="Message"
+                              Grid.Row="1"
+                              Content="{DynamicResource pb_no_preview}"/>
+            </local:VGrid>
+            <local:VLabel x:Name="audioLabel"
+                          Role="Title"
+                          Content="🎵"
+                          Visibility="Hidden"/>
+        </local:VGrid>
+    </local:VGrid>
+</UserControl>

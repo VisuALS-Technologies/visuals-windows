@@ -1,0 +1,114 @@
+﻿<Page x:Class="VisuALS_WPF_App.DisplaySettings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VisuALS_WPF_App"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="DisplaySettings">
+
+    <local:VGrid Role="MainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <local:VLabel
+                   Role="Title"
+                   Grid.Row="0"
+                   Grid.Column="3"
+                   Grid.ColumnSpan="11"
+                   Grid.RowSpan="3"
+                   Content="{DynamicResource dst_title}"/>
+
+        <local:VButton Role="Settings"
+                    Grid.Column="2"
+                    Grid.Row="4"
+                    Grid.RowSpan="3"
+                    Grid.ColumnSpan="3"
+                    Click="FontSizeUp_Click"
+                    Content="{DynamicResource dst_font_up}"/>
+
+        <local:VButton Role="Settings"
+                    Grid.Column="2"
+                    Grid.Row="8"
+                    Grid.RowSpan="3"
+                    Grid.ColumnSpan="3"
+                    Click="FontSizeDown_Click"
+                    Content="{DynamicResource dst_font_down}"/>
+
+        <local:VToggle x:Name="FullscreenToggle"
+                       Role="Settings"
+                       Grid.Column="7"
+                       Grid.Row="4"
+                       Grid.RowSpan="3"
+                       Grid.ColumnSpan="3"
+                       TrueOption="{DynamicResource enabled}"
+                       FalseOption="{DynamicResource disabled}"
+                       Prefix="{DynamicResource dst_fullscreen}"
+                       OptionSelected="Fullscreen_OptionSelected"/>
+
+        <local:VToggle x:Name="BrowserToggle"
+            Role="Settings"
+            Grid.Column="7"
+            Grid.Row="8"
+            Grid.RowSpan="3"
+            Grid.ColumnSpan="3"
+            Prefix="{DynamicResource dst_web_browser}"
+            FalseOption="{DynamicResource br_classic}"
+            TrueOption="{DynamicResource br_win_eye_control}"
+            SelectedOption="False"
+            OptionSelected="BrowserToggle_OptionSelected"
+            IsEnabled="True"/>
+
+        <local:VComboBox x:Name="ThemeComboBox"
+             Role="Settings"
+             Grid.Column="12"
+             Grid.Row="4"
+             Grid.RowSpan="3"
+             Grid.ColumnSpan="3"
+             Prefix="{DynamicResource dst_theme}"
+             ItemSelected="ThemeComboBox_ItemSelected"
+             Prompt="{DynamicResource dst_select_theme}"/>
+
+        <local:VColorSelect x:Name="AccentColorSelect"
+             Grid.Column="12"
+             Grid.Row="8"
+             Grid.RowSpan="3"
+             Grid.ColumnSpan="3"
+             Content="{DynamicResource dst_accent_color}"
+             ColorSelected="AccentColorSelect_ColorSelected"/>
+
+    </local:VGrid>
+</Page>

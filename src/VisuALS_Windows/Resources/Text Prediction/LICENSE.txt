@@ -1,0 +1,4 @@
+﻿The files "en.US.txt" and "es.txt" are adapted from lists on Invoke IT Blog
+Here is a link to the source of the original files: https://invokeit.wordpress.com/frequency-word-lists/
+Both the original files and these modified files are licensed under the Creative Commons – Attribution / ShareAlike 3.0 license
+Here is a link to the license: https://creativecommons.org/licenses/by-sa/3.0/

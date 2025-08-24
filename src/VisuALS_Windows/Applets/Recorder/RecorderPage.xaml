@@ -1,0 +1,117 @@
+﻿<local:AppletPage x:Class="VisuALS_WPF_App.RecorderPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VisuALS_WPF_App"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="RecorderPage">
+
+    <local:VGrid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <local:VLabel
+            Role="Text"
+            Content="Selected Recording:"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"/>
+
+        <local:VLabel x:Name="SelectedFileLabel"
+            Role="Name"
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Content=""/>
+
+        <local:VList x:Name="RecordingsList"
+            Prompt="Recordings"
+            Grid.RowSpan="6"
+            ShowSelection="True"
+            ItemSelectionChanged="RecordingsList_ItemSelectionChanged"/>
+
+        <local:VButton x:Name="Play_Button"
+                Grid.Column="1"
+                Grid.Row="2"
+                Role="Speech"
+                Content="{DynamicResource pb_play}"
+                Click="Play_Button_Click"/>
+
+        <local:VButton x:Name="Replay_Button"
+                Grid.Column="2"
+                Grid.Row="2"
+                Role="Audio"
+                Content="{DynamicResource pb_replay}"
+                Click="Replay_Button_Click"/>
+
+        <local:VButton x:Name="Record_Button"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Grid.Row="3"
+                Role="New"
+                Content="{DynamicResource ar_record}"
+                Click="Record_Button_Click"/>
+
+        <Ellipse x:Name="Recording_Indicator"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2"
+                 Grid.Row="3"
+                 Width="30"
+                 Height="30"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Margin="40"
+                 Fill="Red"
+                 Visibility="Hidden">
+            <Ellipse.Triggers>
+                <EventTrigger RoutedEvent="Ellipse.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="Recording_Indicator"
+                                Storyboard.TargetProperty="Opacity"
+                                From="0"
+                                To="1"
+                                Duration="0:0:0.3"
+                                AutoReverse="True"
+                                RepeatBehavior="Forever">
+                                <DoubleAnimation.EasingFunction>
+                                    <ExponentialEase EasingMode="EaseInOut" Exponent="10"/>
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Ellipse.Triggers>
+        </Ellipse>
+
+        <local:VButton x:Name="Rename_Button"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Grid.Row="4"
+                Role="Edit"
+                Content="{DynamicResource np_rename}"
+                Click="Rename_Button_Click"/>
+
+        <local:VButton x:Name="Delete_Button"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Grid.Row="5" 
+                Role="Delete"
+                Content="{DynamicResource ar_delete_recording}"
+                Click="Delete_Recording_Button_Click"/>
+
+    </local:VGrid>
+</local:AppletPage>

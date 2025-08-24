@@ -1,0 +1,263 @@
+﻿<local:VSelectionControl x:Class="VisuALS_WPF_App.VColorPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VisuALS_WPF_App"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <local:VGrid Role="ControlGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Border x:Name="SelectedColorBorder"
+                Margin="20"
+                CornerRadius="10"
+                BorderThickness="2"
+                BorderBrush="{StaticResource Black}"
+                Background="White">
+            <local:VLabel Role="Label" HorizontalAlignment="Center" 
+                Content="{DynamicResource vf_selected_color}"/>
+        </Border>
+
+        <local:VButton
+            Role="Submit"
+            Margin="10"
+            Grid.Column="0"
+            Grid.Row="1"
+            Click="SubmitColor_Click"
+            Content="{DynamicResource submit}"/>
+
+        <local:VButton
+            Role="Toggle"
+            Margin="10"
+            Grid.Column="0"
+            Grid.Row="2"
+            Click="SwitchToAdvanced_Click"
+            Content="{DynamicResource vf_switch_to_advanced}"/>
+
+        <local:VGrid x:Name="BasicPickerGrid"
+            Visibility="Visible"
+            Role="SubGrid"
+            Grid.Column="1"
+            Grid.RowSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <local:VLabel Grid.ColumnSpan="4" 
+                          Role="Header"
+                          Content="Basic Colors"/>
+            <local:VButton 
+                Grid.Row="1" 
+                Grid.Column="0" 
+                Role="Item"
+                Background="#FF9000"
+                Click="BasicColor_Click"
+                Content="{DynamicResource vf_orange}"/>
+            <local:VButton 
+                Grid.Row="1" 
+                Grid.Column="1" 
+                Role="Item"
+                Background="#179AFD"
+                Click="BasicColor_Click"
+                Content="{DynamicResource vf_visuals_blue}"/>
+            <local:VButton 
+                Grid.Row="1" 
+                Grid.Column="2" 
+                Role="Item"
+                Background="#eb1c38"
+                Click="BasicColor_Click"
+                Content="{DynamicResource vf_red}"/>
+            <local:VButton 
+                Grid.Row="1" 
+                Grid.Column="3" 
+                Role="Item"
+                Background="#f56725"
+                Click="BasicColor_Click"
+                Content="Orange"/>
+            <local:VButton 
+                Grid.Row="2" 
+                Grid.Column="0" 
+                Role="Item"
+                Background="#ffffff"
+                Click="BasicColor_Click"
+                Content="{DynamicResource vf_white}"/>
+            <local:VButton 
+                Grid.Row="2" 
+                Grid.Column="1" 
+                Role="Item"
+                Background="#f5c825"
+                Click="BasicColor_Click"
+                Content="{DynamicResource vf_yellow}"/>
+            <local:VButton 
+                Grid.Row="2" 
+                Grid.Column="2" 
+                Role="Item"
+                Background="#5ceb3f"
+                Click="BasicColor_Click"
+                Content="{DynamicResource vf_lime}"/>
+            <local:VButton 
+                Grid.Row="2" 
+                Grid.Column="3" 
+                Role="Item"
+                Background="#2bb53e"
+                Click="BasicColor_Click"
+                Content="{DynamicResource vf_green}"/>
+            <local:VButton 
+                Grid.Row="3" 
+                Grid.Column="0" 
+                Role="Item"
+                Background="#888888"
+                Click="BasicColor_Click"
+                Content="{DynamicResource vf_gray}"/>
+            <local:VButton 
+                Grid.Row="3" 
+                Grid.Column="1" 
+                Role="Item"
+                Background="#1ed4a4"
+                Click="BasicColor_Click"
+                Content="{DynamicResource vf_teal}"/>
+            <local:VButton 
+                Grid.Row="3" 
+                Grid.Column="2" 
+                Role="Item"
+                Background="#3fc6eb"
+                Click="BasicColor_Click"
+                Content="{DynamicResource vf_sky}"/>
+            <local:VButton 
+                Grid.Row="3" 
+                Grid.Column="3" 
+                Role="Item"
+                Background="#3f5ceb"
+                Click="BasicColor_Click"
+                Content="{DynamicResource vf_blue}"/>
+            <local:VButton 
+                Grid.Row="4" 
+                Grid.Column="1" 
+                Role="Item"
+                Background="#864ed9"
+                Click="BasicColor_Click"
+                Content="{DynamicResource vf_purple}"/>
+            <local:VButton 
+                Grid.Row="4" 
+                Grid.Column="2" 
+                Role="Item"
+                Background="#eb50db"
+                Click="BasicColor_Click"
+                Content="{DynamicResource vf_pink}"/>
+            <local:VButton 
+                Grid.Row="4" 
+                Grid.Column="3" 
+                Role="Item"
+                Background="#eb5089"
+                Click="BasicColor_Click"
+                Content="{DynamicResource vf_rose}"/>
+            <local:VButton 
+                Grid.Row="4" 
+                Grid.Column="0" 
+                Role="Item"
+                Background="#2e2e2e"
+                Click="BasicColor_Click"
+                Content="{DynamicResource vf_coal}"/>
+        </local:VGrid>
+
+        <local:VGrid x:Name="AdvancedPickerGrid"
+            Role="SubGrid"
+            Grid.Column="1"
+            Grid.RowSpan="3"
+            Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.39*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <local:VLabel Grid.ColumnSpan="4" 
+                          Role="Header"
+                          Content="Advanced Picker"/>
+
+            <local:VButton
+                Grid.Row="1" 
+                Grid.Column="0"
+                Click="HueDec_Click"
+                Content="🠈"/>
+
+            <local:VLabel x:Name="HueBorder"
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="20"
+                Role="Label"
+                HorizontalAlignment="Center"
+                Content="Hue"/>
+
+            <local:VButton 
+                Grid.Row="1"
+                Grid.Column="2"
+                Click="HueInc_Click"
+                Content="🠊"/>
+
+            <local:VButton 
+                Grid.Row="2" 
+                Grid.Column="0"
+                Click="SaturationDec_Click"
+                Content="🠈"/>
+
+            <local:VLabel x:Name="SaturationBorder"
+                Grid.Row="2"
+                Grid.Column="1"
+                Margin="20"
+                Role="Label"
+                HorizontalAlignment="Center"
+                Content="Saturation"/>
+
+            <local:VButton 
+                Grid.Row="2"
+                Grid.Column="2"
+                Click="SaturationInc_Click"
+                Content="🠊"/>
+
+            <local:VButton 
+                Grid.Row="3" 
+                Grid.Column="0"
+                Click="BrightnessDec_Click"
+                Content="🠈"/>
+
+            <local:VLabel x:Name="BrightnessBorder"
+                Grid.Row="3"
+                Grid.Column="1"
+                Margin="20"
+                Role="Label"
+                HorizontalAlignment="Center"
+                Content="Brightness"/>
+
+            <local:VButton 
+                Grid.Row="3"
+                Grid.Column="2"
+                Click="BrightnessInc_Click"
+                Content="🠊"/>
+        </local:VGrid>
+    </local:VGrid>
+</local:VSelectionControl>

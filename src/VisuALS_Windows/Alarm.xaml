@@ -1,0 +1,38 @@
+﻿<Page x:Class="VisuALS_WPF_App.Alarm"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VisuALS_WPF_App"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Unloaded="Page_Unloaded"
+      Title="Alarm">
+
+    <local:VGrid x:Name="AlarmGrid" Background="Red">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        
+        <local:VLabel x:Name="AlarmFlash" 
+               Grid.Row="0"
+               Grid.ColumnSpan="3"
+               
+               Role="Title"
+               Content="{DynamicResource al_alarm_on}"/>
+        
+        <local:VButton
+            Grid.Row="1"
+            Grid.Column="1"
+            Role="Cancel"
+            Click="TurnOffAlarm_Click"
+            Content="{DynamicResource al_turn_off_alarm}"/>
+    </local:VGrid>
+</Page>

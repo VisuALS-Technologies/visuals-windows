@@ -1,0 +1,47 @@
+﻿<local:VSelectionControl x:Class="VisuALS_WPF_App.VNumberPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VisuALS_WPF_App"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="150">
+    <local:VGrid Role="Invisible">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="col0" Width="0"/>
+            <ColumnDefinition/>
+            <ColumnDefinition x:Name="col2" Width="0"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="row0"/>
+            <RowDefinition/>
+            <RowDefinition x:Name="row2"/>
+        </Grid.RowDefinitions>
+        <local:VButton Role="Arrow"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       Click="Increment_Click"
+                       Content="+"/>
+        <local:VButton Role="Arrow"
+                       Grid.Row="1"
+                       Grid.Column="2"
+                       Click="Increment_Click"
+                       Content="+"/>
+        <local:VTextInput x:Name="inputBox"
+                       Role="SingleLine"
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       HorizontalContentAlignment="Center"
+                       Text="0"/>
+        <local:VButton Role="Arrow"
+                       Grid.Row="2"
+                       Grid.Column="1"
+                       Click="Decrement_Click"
+                       Content="-"/>
+        <local:VButton Role="Arrow"
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       Click="Decrement_Click"
+                       Content="-"/>
+    </local:VGrid>
+</local:VSelectionControl>

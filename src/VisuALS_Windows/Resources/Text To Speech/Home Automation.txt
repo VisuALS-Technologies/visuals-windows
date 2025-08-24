@@ -1,0 +1,11 @@
+Alexa, stop.
+Alexa, mute.
+Alexa, unmute.
+Alexa, what's in the news today?
+Alexa, play some music.
+Alexa, set an alarm.
+Alexa, what's the temperature?
+Alexa, what's the weather like?
+Alexa, turn on the T.V.
+Alexa, turn off the T.V.
+Alexa, turn on a movie.

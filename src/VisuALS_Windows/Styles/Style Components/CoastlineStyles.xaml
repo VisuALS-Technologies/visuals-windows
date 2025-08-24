@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:VisuALS_WPF_App"
+                    xmlns:eyeX="clr-namespace:EyeXFramework.Wpf;assembly=EyeXFramework"
+                    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
+
+    <Style x:Key="CoastlineButtonStyle" TargetType="local:VButton" BasedOn="{StaticResource CandyButtonStyle}">
+        <Setter Property="Foreground" Value="{StaticResource DeepSea}"/>
+    </Style>
+    
+    <Style x:Key="CoastlineGridStyle" TargetType="local:VGrid" BasedOn="{StaticResource BaseGridStyle}">
+        <Style.Triggers>
+            <Trigger Property="Role" Value="MainGrid">
+                <Setter Property="Background" Value="{StaticResource Coastline}"/>
+            </Trigger>
+            <Trigger Property="Role" Value="DialogBox">
+                <Setter Property="Background" Value="{StaticResource Coastline}"/>
+            </Trigger>
+            <Trigger Property="Role" Value="ControlGrid">
+                <Setter Property="Background" Value="Transparent"/>
+            </Trigger>
+            <Trigger Property="Role" Value="SubGrid">
+                <Setter Property="Background" Value="{StaticResource DarkGlass}"/>
+                <Setter Property="Margin" Value="10"/>
+            </Trigger>
+            <Trigger Property="Role" Value="Invisible">
+                <Setter Property="Background" Value="Transparent"/>
+            </Trigger>
+            <Trigger Property="Role" Value="NotSpecified">
+                <Setter Property="Background" Value="Transparent"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="local:VLabel" x:Key="CoastlineLabelStyle" BasedOn="{StaticResource BaseLabelStyle}">
+        <Setter Property="Foreground" Value="{StaticResource DeepSea}"/>
+    </Style>
+
+</ResourceDictionary>

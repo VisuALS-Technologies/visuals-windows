@@ -1,0 +1,330 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:VisuALS_WPF_App" 
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+    Adding a string to the resource file:
+    When you add a string to this file, add a comment to the side saying this:
+    <!- TRANSLATE: [list of languages to translate this string into] ->
+    Then, message those who are doing translations for the languages the string needs 
+    to be translated into.
+    This is to make sure we do not miss any strings that need to be translated.
+    -->
+
+    <!-- Applets -->
+    <system:String x:Key="ap_text_to_speech">Texto-a-voz (TAV)</system:String>
+    <system:String x:Key="ap_notepad">Bloc de Notas</system:String>
+    <system:String x:Key="ap_web_browser">Navegador de Internet</system:String>
+    <system:String x:Key="ap_recorder">Grabador de Audio</system:String>
+    <system:String x:Key="ap_dev_tools">Herramientas de Desarrollos</system:String>
+    <system:String x:Key="ap_file_browser">Explorador de archivos</system:String>
+    <system:String x:Key="ap_calculator">Calculadora</system:String>
+    <system:String x:Key="ap_photo_viewer">Fotos</system:String>
+
+    <!-- App Descriptions -->
+    <system:String x:Key="ap_desc_dev_tools" xml:space="preserve">Una aplicación con algunas funciones especiales que la mayoría de los usuarios no necesitarán, como restablecer los datos de predicción de texto y buscar traducciones faltantes.</system:String>
+    <system:String x:Key="ap_desc_notepad" xml:space="preserve">Para escribir y leer documentos de texto simples. Este subprograma NO PUEDE mostrar ni editar documentos de Word (.doc/.docx), PDF, etc. Solo puede editar documentos de texto sin formato (.txt)</system:String>
+    <system:String x:Key="ap_desc_recorder" xml:space="preserve">Para grabar clips de audio. Puedes usar esto para grabar frases y escucharlas después. </system:String>
+    <system:String x:Key="ap_desc_text_to_speech" xml:space="preserve">Lee mensajes escritos en voz alta usando un software de texto a voz. Las frases se pueden almacenar en varias categorías para facilitar el acceso, y las grabaciones del subprograma Audio Recorder también se pueden reproducir desde aquí.</system:String>
+    <system:String x:Key="ap_desc_web_browser" xml:space="preserve">Para ver páginas web. Puedes poner un marcador de páginas para facilitar el acceso más tarde. Hay dos versiones del navegador web, una que utiliza una cuadrícula de botones para la interacción y otra que depende del uso de la barra de “Windows Eye Control”. Puede cambiar entre estos dos desde la pantalla de Configuración.</system:String>
+    <system:String x:Key="ap_desc_file_browser">For browsing files on the system, including moving, copying, deleting, and viewing files.</system:String>
+    <system:String x:Key="ap_desc_calculator">A basic calculator application.</system:String>
+    <system:String x:Key="ap_desc_photo_viewer">A simple applet for viewing photos.</system:String>
+
+    <system:String x:Key="ap_disable" xml:space="preserve">Deshabilitar subprograma</system:String>
+    <system:String x:Key="ap_disabled" xml:space="preserve">Desactivado</system:String>
+    <system:String x:Key="ap_enable" xml:space="preserve">Habilitar subprograma</system:String>
+    <system:String x:Key="ap_enabled" xml:space="preserve">Activado</system:String>
+    <system:String x:Key="ap_select_for_details" xml:space="preserve">Seleccione un subprograma para ver los detalles y habilitarlo/deshabilitarlo.</system:String>
+
+    <!-- Browsers -->
+    <system:String x:Key="br_classic">Clásico</system:String>
+    <system:String x:Key="br_win_eye_control">Control Ocular de Windows</system:String>
+    
+    <!-- Themes -->
+    <system:String x:Key="th_gumdrop">Goma de Mascar</system:String>
+    <system:String x:Key="th_licorice">Regaliz</system:String>
+    <system:String x:Key="th_coastline" xml:space="preserve">Línea costera</system:String>
+
+    <!-- Keyboard Layouts -->
+    <system:String x:Key="kl_en_classic_qwerty">Qwerty Clásico para Inglés</system:String>
+    <system:String x:Key="kl_es_classic_qwerty">Qwerty Clásico para Español</system:String>
+
+    <!-- Dwell Indicators -->
+    <system:String x:Key="di_none" xml:space="preserve">Ninguno</system:String>
+    <system:String x:Key="di_pie" xml:space="preserve">Circular</system:String>
+
+    <!-- General -->
+    <system:String x:Key="yes">Sí</system:String>
+    <system:String x:Key="no">No</system:String>
+    <system:String x:Key="enabled">Habilitado</system:String>
+    <system:String x:Key="disabled">Deshabilitado</system:String>
+    <system:String x:Key="ok">Ok</system:String>
+    <system:String x:Key="submit">Somete</system:String>
+    <system:String x:Key="speak">Habla</system:String>
+    <system:String x:Key="close">Cerrado</system:String>
+
+    <!-- Playback Controls -->
+    <system:String x:Key="pb_play">Ponga</system:String>
+    <system:String x:Key="pb_stop">Para</system:String>
+    <system:String x:Key="pb_pause">Pausa</system:String>
+    <system:String x:Key="pb_resume">Continua</system:String>
+    <system:String x:Key="pb_fast_forward" xml:space="preserve">Avance rápido</system:String>
+    <system:String x:Key="pb_no_preview" xml:space="preserve">No hay vista previa disponible</system:String>
+    <system:String x:Key="pb_replay" xml:space="preserve">Repetir</system:String>
+    <system:String x:Key="pb_rewind" xml:space="preserve">Retroceder</system:String>
+
+    <!-- Navigation Bar -->
+    <system:String x:Key="nv_home">Casa</system:String>
+    <system:String x:Key="nv_pause">Pausa</system:String>
+    <system:String x:Key="nv_resume">Reanuda</system:String>
+    <system:String x:Key="nv_back">Vuelve</system:String>
+
+    <!-- Main Menu -->
+    <system:String x:Key="mm_main_menu">Menú Principal</system:String>
+    <system:String x:Key="mm_alarm">Alarma</system:String>
+    <system:String x:Key="mm_settings">Ajustes</system:String>
+
+    <!-- Alarm -->
+    <system:String x:Key="al_alarm_on">ALARMA ACTIVADA</system:String>
+    <system:String x:Key="al_turn_off_alarm">Apaga la alarma</system:String>
+
+    <!-- Audio Recorder -->
+    <system:String x:Key="ar_record">Graba</system:String>
+    <system:String x:Key="ar_enter_file_name">Por favor entra un nombre del archivo.</system:String>
+    <system:String x:Key="ar_file_already_exists">Un archivo con este nombre ya existe. 
+        Escoge un otro nombre.</system:String>
+    <system:String x:Key="ar_stop_recording">Para de grabar</system:String>
+    <system:String x:Key="ar_mute">Pone Sordina</system:String>
+    <system:String x:Key="ar_unmute">Volumen Encendido</system:String> <!-- TODO Translate this better -->
+    <system:String x:Key="ar_delete_recording">Elimina la grabación</system:String>
+    <system:String x:Key="ar_delete_prompt">Seleccione una grabación para eliminar</system:String>
+    <system:String x:Key="ar_no_recordings_to_delete">Hay no grabaciónes para eliminar</system:String>
+    <system:String x:Key="ar_open_recording">Abre grabaciónes</system:String>
+    <system:String x:Key="ar_open_prompt">Seleccione una grabación para poner el audio</system:String>
+    <system:String x:Key="ar_no_recordings_to_open">Hay no grabaciónes para abrir</system:String>
+    <system:String x:Key="ar_no_recording_with_that_name">No hay grabaciones con este nombre</system:String>
+    <system:String x:Key="ar_no_microphone" xml:space="preserve">¡No se encontró ningún aparato de micrófono!</system:String>
+    <system:String x:Key="ar_no_speaker" xml:space="preserve">¡No se encontró ningún aparato de altavoz!</system:String>
+    <system:String x:Key="ar_recordings_folder" xml:space="preserve">Carpeta de grabaciones:</system:String>
+    <system:String x:Key="ar_settings_title" xml:space="preserve">Configuración de la grabadora</system:String>
+    <system:String x:Key="ar_illegal_file_name">¡Nombre de archivo no válido! Los siguientes caracteres no están permitidos en un nombre de archivo:</system:String>
+    <system:String x:Key="ar_saving_file_as">Guardar grabación como:</system:String>
+    
+    <!-- Framework Elements -->
+    <!-- Color Picker -->
+    <system:String x:Key="vf_selected_color">Color Seleccionada</system:String>
+    <system:String x:Key="vf_switch_to_advanced">Cambiar a Avanzado</system:String>
+    <system:String x:Key="vf_basic_colors">Colores Básicos</system:String>
+    <system:String x:Key="vf_visuals_orange">VisuALS Naranja</system:String>
+    <system:String x:Key="vf_visuals_blue">VisuaALS Azul</system:String>
+    <system:String x:Key="vf_red">Rojo</system:String>
+    <system:String x:Key="vf_orange">Naranja</system:String>
+    <system:String x:Key="vf_white">Blanco</system:String>
+    <system:String x:Key="vf_yellow">Amarillo</system:String>
+    <system:String x:Key="vf_lime">Lima</system:String>
+    <system:String x:Key="vf_green">Verde</system:String>
+    <system:String x:Key="vf_gray">Gris</system:String>
+    <system:String x:Key="vf_teal">Verde Azulado</system:String>
+    <system:String x:Key="vf_sky">Cielo Azul</system:String>
+    <system:String x:Key="vf_blue">Azul</system:String>
+    <system:String x:Key="vf_coal">Negro de Carbón</system:String>
+    <system:String x:Key="vf_purple">Morado</system:String>
+    <system:String x:Key="vf_pink">Rosado</system:String>
+    <system:String x:Key="vf_rose">Rosa Rojo</system:String>
+    
+    <!-- Advanced Color Picker -->
+    <system:String x:Key="vf_switch_to_basic">Cambiar a Básico</system:String>
+    <system:String x:Key="vf_advanced_picker">Selección de Color Avanzada</system:String>
+    <system:String x:Key="vf_hue">Matiz</system:String>
+    <system:String x:Key="vf_saturation">Saturación</system:String>
+    <system:String x:Key="vf_brightness">Brillo</system:String>
+    
+    <!-- List -->
+    <system:String x:Key="vf_previous_page">Página Anterior</system:String>
+    <system:String x:Key="vf_next_page">Siguiente Página</system:String>
+
+    <!-- Keyboard -->
+    <!-- Basic Bar -->
+    <system:String x:Key="key_clear">Despeja</system:String>
+    <system:String x:Key="key_space">Espacio</system:String>
+    <!-- Classic Bar -->
+    <system:String x:Key="key_more">Más</system:String>
+
+    <!-- Cursor Control -->
+    <system:String x:Key="key_page_start">Principio de la Página</system:String>
+    <system:String x:Key="key_line_start">Principio de la Línea</system:String>
+    <system:String x:Key="key_line_end">Fin de la Línea</system:String>
+    <system:String x:Key="key_page_end">Fin de la Página</system:String>
+    <system:String x:Key="key_undo">Deshaga</system:String>
+    <system:String x:Key="key_redo">Rehaga</system:String>
+    <system:String x:Key="key_copy">Copia</system:String>
+    <system:String x:Key="key_paste">Pega</system:String>
+    <system:String x:Key="key_clear_selection">Despeja Selección</system:String>
+    <system:String x:Key="key_select_all">Selecciona Todo</system:String>
+    <!-- QWERTY Tab -->
+    <system:String x:Key="key_shift">Mayús</system:String>
+    <system:String x:Key="key_enter">Intro</system:String>
+    <!-- Special Characters -->
+    <system:String x:Key="key_other">Otra</system:String>
+    <system:String x:Key="key_esc">Esc</system:String> <!-- Don't know if I need this one, but just in case -->
+    <system:String x:Key="key_back" xml:space="preserve">Atrás</system:String>
+    <system:String x:Key="key_cursor_control" xml:space="preserve">Control de cursores</system:String>
+
+    <!-- Notepad -->
+    <system:String x:Key="np_delete">Elimina</system:String>
+    <system:String x:Key="np_delete_confirmation">¿Estás seguro de que quieres eliminar el archivo?</system:String>
+    <system:String x:Key="np_rename">Cambia el nombre</system:String>
+    <system:String x:Key="np_open">Abre</system:String>
+    <system:String x:Key="np_open_prompt">Selecciona un archivo para abrir:</system:String>
+    <system:String x:Key="np_no_notes">No tiene crear algo notas.</system:String>
+    <system:String x:Key="np_new">Nuevo</system:String>
+    
+    <system:String x:Key="np_save_changes">¿Guarda los combios?</system:String>
+    <system:String x:Key="np_save">Guarda</system:String>
+    <system:String x:Key="np_speak">Habla</system:String>
+    <system:String x:Key="np_hide_options">Esconde Opciones</system:String>
+    <system:String x:Key="np_file_options">Opciones del Archivo</system:String>
+    <system:String x:Key="np_illegal_file_name">ERROR: ¡No puede guagar el archive, nombre inválido por el archivo! Estos carácteres son inválidos en un nombre de archivo:</system:String>
+
+    <system:String x:Key="np_autosave_prefix" xml:space="preserve">Guardado automático:</system:String>
+    <system:String x:Key="np_notes_folder" xml:space="preserve">Carpeta de notas:</system:String>
+    <system:String x:Key="np_settings_title" xml:space="preserve">Configuración de notas</system:String>
+
+    <!-- Settings Menu -->
+    <system:String x:Key="st_audio_settings">Ajustos del Audio</system:String>
+    <system:String x:Key="st_display_settings">Ajustos del Visualizador</system:String>
+    <system:String x:Key="st_eye_tracking_settings">Ajustos del Registro Visual</system:String>
+    <system:String x:Key="st_language_settings">Ajustos de Idioma y Teclado</system:String>
+    <system:String x:Key="st_exit_visuals">Sale VisuALS</system:String>
+    <system:String x:Key="st_exit_prompt">¿Estás seguro de que quieres salir VisuALS?</system:String>
+    <system:String x:Key="st_debug">en modo de depuación/no instalado</system:String>
+    <system:String x:Key="st_manage_applets" xml:space="preserve">Administrar subprogramas</system:String>
+
+    <!-- Audio Settings -->
+    <system:String x:Key="ast_title">Ajustos del Audio</system:String>
+    <system:String x:Key="ast_volume_up">Volumen +</system:String>
+    <system:String x:Key="ast_volume_down">Volumen -</system:String>
+    <system:String x:Key="ast_tts_voice" xml:space="preserve">Voz para TAV: </system:String>
+    <system:String x:Key="ast_test_voice">Proba Voz para TAV</system:String>
+    <system:String x:Key="ast_test_1">Esto es</system:String>
+    <system:String x:Key="ast_test_2">voz</system:String>
+    <system:String x:Key="ast_confirmations" xml:space="preserve">Confirmaciónes: </system:String>
+    <system:String x:Key="ast_mute_alarm" xml:space="preserve">Silencia la Alarma: </system:String>
+    <system:String x:Key="ast_select_tts_voice" xml:space="preserve">Seleccione una voz TTS: </system:String>
+
+    <!-- Display Settings -->
+    <system:String x:Key="dst_title">Ajustos del Visualizador</system:String>
+    <system:String x:Key="dst_font_up">Tamaño de Fuente +</system:String>
+    <system:String x:Key="dst_font_down">Tamaño de Fuente -</system:String>
+    <system:String x:Key="dst_fullscreen" xml:space="preserve">Pantalla Completa: </system:String>
+    <system:String x:Key="dst_theme" xml:space="preserve">Tema: </system:String>
+    <system:String x:Key="dst_select_theme">Selecciona una Tema:</system:String>
+    <system:String x:Key = "dst_accent_color" xml:space="preserve">Acentuar el color</system:String>
+
+    <!-- Eye Tracking Settings -->
+    <system:String x:Key="est_title">Ajustos del Registro Visual</system:String>
+    <system:String x:Key="est_dwell_time">Tiempo de Descansa</system:String> <!-- This literally translates to "Rest time" because I couldn't think of a better way to translate "Dwell time"-->
+    <system:String x:Key="est_customization">Personalización del Ojo</system:String>
+    <system:String x:Key="est_eyeball" xml:space="preserve">Ojo: </system:String>
+    <system:String x:Key="est_size" xml:space="preserve">Tamaño del Ojo: </system:String>
+    <system:String x:Key="est_size_prompt">Selecciona Tamaño del Ojo:</system:String>
+    <system:String x:Key="est_border" xml:space="preserve">Tamaño de Ribete del Ojo: </system:String>
+    <system:String x:Key="est_border_prompt">Selecciona Tamaño de Ribete del Ojo:</system:String>
+    <system:String x:Key="est_color">Color del Ojo</system:String>
+    <system:String x:Key="est_border_color">Color del Ribete del Ojo</system:String>
+    <system:String x:Key="est_dwell_indicator" xml:space="preserve">Indicador de mirada: </system:String>
+
+    <!-- Language Settings -->
+    <system:String x:Key="lst_title">Ajustos del Idioma</system:String>
+    <system:String x:Key="lst_keyboard" xml:space="preserve">Teclado: </system:String>
+    <system:String x:Key="lst_language" xml:space="preserve">Idioma: </system:String>
+    <system:String x:Key="lst_select_language">Selecciona un Idioma:</system:String>
+    <system:String x:Key="lst_select_keyboard">Selecciona un Teclado:</system:String>
+
+    <!-- Text to Speech -->
+    <system:String x:Key="tts_speak">Habla</system:String>
+    <system:String x:Key="tts_recent">Reciente</system:String>
+    <system:String x:Key="tts_no_recents">No hay frases recientes. Escribe alguna cosa y hace clic en 'Habla'. Esa frase estará añadido a frases recientes.</system:String>
+    <system:String x:Key="tts_needs">Necesariamente</system:String>
+    <system:String x:Key="tts_feelings">Sentimientos</system:String>
+    <system:String x:Key="tts_conversation">Conversación</system:String>
+    <system:String x:Key="tts_home_automation">Automatización del Hogar</system:String>
+    <system:String x:Key="tts_category_has_no_phrases1">La categoría</system:String>
+    <system:String x:Key="tts_category_has_no_phrases2">no tiene frases. Puede añade frases escribiendo un frase y haciendo un clic en 'Añade Frase'.</system:String> 
+    <system:String x:Key="tts_add_phrase">Añade Frase</system:String>
+    <system:String x:Key="tts_add_phrase_prompt">Esconde una categoría a la que poner la frase:</system:String>
+    <system:String x:Key="tts_delete_phrase">Elimina Frase</system:String>
+    <system:String x:Key="tts_delete_from_category_prompt">Cambia una categoría de cual elimar una frase:</system:String> 
+    <system:String x:Key="tts_delete_phrase_prompt">Esconde una frase guieres eliminar</system:String>
+    <system:String x:Key="tts_no_recordings" xml:space="preserve">Aún no tienes ninguna grabación. Puede realizar grabaciones desde el subprograma Recorder.</system:String>
+    <system:String x:Key="tts_phrases_folder" xml:space="preserve">Carpeta de frases:</system:String>
+    <system:String x:Key="tts_recordings" xml:space="preserve">Grabaciones</system:String>
+    <system:String x:Key="tts_settings_title" xml:space="preserve">Configuración de TTS</system:String>
+
+    <!-- Carl's pause-->
+    <system:String x:Key="tts_carl_pause">Pausa de Carl</system:String>
+    <system:String x:Key="tts_in_memory_of_carl">En memoria de Carl Phelps</system:String>
+    <system:String x:Key="tts_pause_description">Aquí, puede pausar para hacer otras cosas, como mirar televisión, sin preocuparse por hacer clic en botónes. 
+        El solo botón activado es un solo botón de retroceso, 'Salida Pausa de Carl', que te llevará de vuelta a Texto-a-Voz.</system:String>
+    <system:String x:Key="tts_exit_carl_pause">Exit Carl's Pause</system:String>
+
+    <!-- Web Browser -->
+    <system:String x:Key="wb_refresh">Actualiza</system:String>
+    <system:String x:Key="wb_single_click">Hace solo clic</system:String>
+    <system:String x:Key="wb_double_click">Hace doble clic</system:String>
+    <system:String x:Key="wb_zoom_in">Hace zoom</system:String>
+    <system:String x:Key="wb_zoom_out">Aleja zoom</system:String>
+    <system:String x:Key="wb_zoom_in_x2">Hace zoom x2</system:String>
+    <system:String x:Key="wb_delete_bookmark">Elimina Marcador</system:String>
+    <system:String x:Key="wb_go_back">Vuelve</system:String>
+    <system:String x:Key="wb_go_forward">Avanza</system:String>
+    <system:String x:Key="wb_read">Lee</system:String>
+    <system:String x:Key="wb_click">Hace Clic</system:String>
+    <system:String x:Key="wb_add_bookmark">Añada Marcador</system:String>
+    <system:String x:Key="wb_bookmark_added">está añadido a marcadores.</system:String> 
+    <system:String x:Key="wb_bookmarks">Marcadores</system:String>
+    <system:String x:Key="wb_no_bookmarks">No tiene añadar algo marcadores.</system:String>
+    <system:String x:Key="wb_web_input">Entra en navegador web</system:String>
+    <system:String x:Key="wb_url_input">Entra URL</system:String>
+    <system:String x:Key="wb_go">Ve</system:String>
+    <system:String x:Key="wb_browser_type_prefix" xml:space="preserve">Navegador Web:</system:String>
+    <system:String x:Key="wb_click_type_prefix" xml:space="preserve">Haga clic en Tipo:</system:String>
+    <system:String x:Key="wb_mode_prefix" xml:space="preserve">Modo:</system:String>
+    <system:String x:Key="wb_settings_title" xml:space="preserve">Configuración del Navegador Web</system:String>
+
+    <!-- File Browser -->
+    <system:String x:Key="fb_view">Ver</system:String>
+    <system:String x:Key="fb_move">Mover</system:String>
+    <system:String x:Key="fb_copy">Copiar</system:String>
+    <system:String x:Key="fb_paste">Pegar</system:String>
+    <system:String x:Key="fb_delete">Eliminar</system:String>
+    <system:String x:Key="fb_rename">Cambiar el Nombre</system:String>
+    <system:String x:Key="fb_delete_confirm">¿Está seguro de que desea eliminar este archivo/carpeta: </system:String>
+    <system:String x:Key="fb_file_exists">¡Ya existe un archivo/carpeta con ese nombre en la nueva ubicación!</system:String>
+    <system:String x:Key="fb_file_does_not_exist">¡El archivo seleccionado no existe!</system:String>
+    <system:String x:Key="fb_unauthorized_access">¡La acción no se pudo completar porque el archivo o carpeta requiere permisos de administrador!</system:String>
+    <system:String x:Key="fb_illegal_path_name">No se puede cambiar el nombre del archivo/carpeta, ¡nombre no válido! Los siguientes caracteres no están permitidos en el nombre de un archivo/carpeta:</system:String>
+    <system:String x:Key="fb_file_action_error">¡Ocurrió el siguiente error y no se pudo realizar la acción!</system:String>
+
+    <!-- Photo Viewer -->
+    <system:String x:Key="pv_settings_title">Configuración del visor de fotos</system:String>
+    <system:String x:Key="pv_photos_folder">Carpeta de fotos</system:String>
+
+    <!-- Old VisuALS File Migration -->
+    <system:String x:Key="fm_cleanup_file_error" xml:space="preserve">Se produjo un error al intentar eliminar archivos antiguos.</system:String>
+    <system:String x:Key="fm_copy_files?" xml:space="preserve">¿Quiere copiar sus frases, notas y otro contenido de VisuALS a la nueva versión?</system:String>
+    <system:String x:Key="fm_keep_using_old_version?" xml:space="preserve">Parece que tiene instalada una versión anterior a la 2.0 de VisuALS. ¿Tiene la intención de seguir usando la versión anterior?</system:String>
+    <system:String x:Key="fm_migration_complete" xml:space="preserve">¡Manejo de versiones antiguas de VisuALS completo! Esperamos que disfrute de VisuALS V</system:String>
+    <system:String x:Key="fm_migration_error" xml:space="preserve">Ocurrió un error durante el manejo de archivos VisuALS anteriores a la versión 2.0. Busque en el archivo de texto Documentos\\VisuALS\\logs\\migration_log.txt para obtener más detalles.</system:String>
+    <system:String x:Key="fm_move_files?" xml:space="preserve">Parece que tiene archivos de una versión anterior a la 2.0 de VisuALS. ¿Quiere mover sus notas, frases y otro contenido de VisuALS a la nueva versión?</system:String>
+    <system:String x:Key="fm_no_migration_errors" xml:space="preserve">Todos los archivos se migraron correctamente sin errores.</system:String>
+    <system:String x:Key="fm_notes_file_error" xml:space="preserve">Se produjo un error al intentar mover los archivos de notas.</system:String>
+    <system:String x:Key="fm_phrases_file_error" xml:space="preserve">Se produjo un error al intentar mover frases de texto-a-voz.</system:String>
+    <system:String x:Key="fm_settings_file_error" xml:space="preserve">Se ha producido un error al intentar de limpiar los archivos de configuración.</system:String>
+    <system:String x:Key="fm_suggest_uninstall_old_version" xml:space="preserve">Sugerimos desinstalar la versión anterior de VisuALS antes de continuar.</system:String>
+    <system:String x:Key="fm_sync_files?" xml:space="preserve">¿Quieres que tus frases, notas y otro contenido de VisuALS se sincronicen en ambas versiones?</system:String>
+    <system:String x:Key="fm_bookmarks_file_error">Se produjo un error al intentar mover el archivo de marcadores.</system:String>
+
+</ResourceDictionary>
