@@ -293,6 +293,9 @@
     <Compile Include="Applets\Recorder\RecorderPage.xaml.cs">
       <DependentUpon>RecorderPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Settings\EyeBallSettings.xaml.cs">
+      <DependentUpon>EyeBallSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Settings\UninstallOptions.xaml.cs">
       <DependentUpon>UninstallOptions.xaml</DependentUpon>
     </Compile>
@@ -550,6 +553,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Applets\Recorder\RecorderPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Settings\EyeBallSettings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

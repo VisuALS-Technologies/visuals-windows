@@ -233,7 +233,8 @@ namespace VisuALS_WPF_App
             }
             catch { }
 
-            GazeTrackerManager.SelectedGazeTracker.EndGazePointStream();
+            if (GazeTrackerManager.SelectedGazeTracker != null)
+                GazeTrackerManager.SelectedGazeTracker.EndGazePointStream();
         }
     }
 }

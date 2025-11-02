@@ -22,8 +22,11 @@ namespace VisuALS_WPF_App
 
                 _selectedGazeTracker = value;
 
-                _selectedGazeTracker.StartGazePointStream();
-                _selectedGazeTracker.GazePointReceived += GazePointReceivedHandler;
+                if (_selectedGazeTracker != null)
+                {
+                    _selectedGazeTracker.StartGazePointStream();
+                    _selectedGazeTracker.GazePointReceived += GazePointReceivedHandler;
+                }
             }
         }
         private static IGazeTracker _selectedGazeTracker = null;
@@ -37,6 +40,10 @@ namespace VisuALS_WPF_App
         {
             GazeTrackers.Add(new MouseGazeSim());
             SelectedGazeTracker = GazeTrackers[0];
+        }
+        public static Dictionary<string, object> NamesAndGazeTrackersDictionary()
+        {
+            return GazeTrackers.ToDictionary(gt => gt.DeviceName, gt => gt as object);
         }
     }
 }

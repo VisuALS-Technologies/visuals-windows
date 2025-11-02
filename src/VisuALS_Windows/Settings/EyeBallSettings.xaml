@@ -1,4 +1,4 @@
-﻿<Page x:Class="VisuALS_WPF_App.EyeTrackingSettings"
+﻿<Page x:Class="VisuALS_WPF_App.EyeBallSettings"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:VisuALS_WPF_App"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
-      Title="EyeTrackingSettings">
+      Title="EyeBallSettings">
     <local:VGrid Role="MainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -49,60 +49,44 @@
                    Grid.Column="3"
                    Grid.ColumnSpan="11"
                    Grid.RowSpan="3"
-                   Content="Eye Tracking Settings"/>
+                   Content="Eye Ball Settings"/>
 
-        <local:VNumberPicker x:Name="DwellTimeNumberPicker"
-                    Grid.Column="2"
-                    Grid.Row="4"
-                    Grid.RowSpan="7"
-                    Grid.ColumnSpan="3"
-                    Label="{DynamicResource est_dwell_time}"
-                    Unit="sec"
-                    Min="0.1"
-                    Max="2"
-                    Value="1"
-                    Increment="0.1"
-                    ItemSelectionChanged="DwellTime_NumberSelected"/>
-
-        <local:VToggle x:Name="EyeBallToggle"
+        <local:VComboBox x:Name="EyeBallSizeComboBox"
                     Role="Settings"
-                    Grid.Column="7"
+                    Grid.Column="4"
                     Grid.Row="4"
                     Grid.RowSpan="3"
                     Grid.ColumnSpan="3"
-                    Prefix="{DynamicResource est_eyeball}"
-                    TrueOption="{DynamicResource enabled}"
-                    FalseOption="{DynamicResource disabled}"
-                    SelectedOption="{DynamicResource disabled}"
-                    OptionSelected="EyeBallToggle_OptionSelected"/>
+                    Prefix="{DynamicResource est_size}"
+                    Prompt="{DynamicResource est_size_prompt}"
+                    ItemSelected="EyeBallSize_OptionSelected"/>
 
-        <local:VButton x:Name="EyeBallCustomization"
+        <local:VComboBox x:Name="EyeBallBorderComboBox"
                     Role="Settings"
-                    Grid.Column="12"
-                    Grid.Row="4"
-                    Grid.RowSpan="3"
-                    Grid.ColumnSpan="3"
-                    Click="EyeBallCustomization_Click"/>
-
-        <local:VToggle x:Name="DwellIndicatorToggle"
-                    Role="Settings"
-                    Grid.Column="7"
+                    Grid.Column="4"
                     Grid.Row="8"
                     Grid.RowSpan="3"
                     Grid.ColumnSpan="3"
-                    Prefix="{DynamicResource est_dwell_indicator}"
-                    TrueOption="{DynamicResource enabled}"
-                    FalseOption="{DynamicResource disabled}"
-                    SelectedOption="{DynamicResource enabled}"
-                    OptionSelected="DwellIndicatorToggle_OptionSelected"/>
+                    Prefix="{DynamicResource est_border}"
+                    Prompt="{DynamicResource est_border_prompt}"
+                    ItemSelected="EyeBallBorder_OptionSelected"/>
 
-        <local:VComboBox x:Name="EyeTrackerCombo"
+        <local:VColorSelect x:Name="EyeBallColorSelect"
                     Role="Settings"
-                    Grid.Column="12"
+                    Grid.Column="10"
+                    Grid.Row="4"
+                    Grid.RowSpan="3"
+                    Grid.ColumnSpan="3"
+                    Content="{DynamicResource est_color}"
+                    ColorSelected="EyeBallColor_ColorSelected"/>
+
+        <local:VColorSelect x:Name="EyeBallBorderColorSelect"
+                    Role="Settings"
+                    Grid.Column="10"
                     Grid.Row="8"
                     Grid.RowSpan="3"
                     Grid.ColumnSpan="3"
-                    ItemSelected="EyeTracker_ItemSelected"/>
-
+                    Content="{DynamicResource est_border_color}"
+                    ColorSelected="EyeBallBorderColor_ColorSelected"/>
     </local:VGrid>
 </Page>

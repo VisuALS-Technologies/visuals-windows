@@ -14,17 +14,14 @@ namespace VisuALS_WPF_App
         {
             InitializeComponent();
 
-            //Setup Size Options
-            EyeBallSizeComboBox.SetItems(new object[] { 10.0, 20.0, 30.0, 40.0, 50.0, 60.0 });
-            EyeBallBorderComboBox.SetItems(new object[] { 0.0, 2.0, 4.0, 6.0, 8.0, 10.0 });
+            //Set eye tracker devices list
+
+            EyeTrackerCombo.SetItems(GazeTrackerManager.NamesAndGazeTrackersDictionary());
+            EyeTrackerCombo.AddItem("None", "None");
 
             //Initialize control values
             DwellTimeNumberPicker.Value = (int)Application.Current.Resources["DwellTime"] / 1000.0;
             EyeBallToggle.Value = EyeBall.IsEnabled;
-            EyeBallBorderColorSelect.SelectedColor = EyeBall.LineColor.Color;
-            EyeBallColorSelect.SelectedColor = EyeBall.BallColor.Color;
-            EyeBallBorderComboBox.SelectedItem = EyeBall.LineSize;
-            EyeBallSizeComboBox.SelectedItem = EyeBall.BallSize;
             DwellIndicatorToggle.Value = VButton.DwellIndicator;
         }
 
@@ -33,34 +30,6 @@ namespace VisuALS_WPF_App
             App.globalConfig.Set("dwell_time", DwellTimeNumberPicker.Value * 1000);
             Application.Current.Resources["DwellTime"] = Convert.ToInt32(DwellTimeNumberPicker.Value * 1000);
             VButton.UpdateDwellIndicatorAnimation();
-        }
-
-        private void EyeBallSize_OptionSelected(object sender, RoutedEventArgs e)
-        {
-            double size = Convert.ToDouble(EyeBallSizeComboBox.SelectedItem);
-            App.globalConfig.Set("eyeball_size", size);
-            EyeBall.BallSize = size;
-        }
-
-        private void EyeBallBorder_OptionSelected(object sender, RoutedEventArgs e)
-        {
-            double size = Convert.ToDouble(EyeBallBorderComboBox.SelectedItem);
-            App.globalConfig.Set("eyeball_border_size", size);
-            EyeBall.LineSize = size;
-        }
-
-        private void EyeBallColor_ColorSelected(object sender, RoutedEventArgs e)
-        {
-            string color = EyeBallColorSelect.SelectedColorString;
-            App.globalConfig.Set("eyeball_color", color);
-            EyeBall.BallColor = new SolidColorBrush(EyeBallColorSelect.SelectedColor);
-        }
-
-        private void EyeBallBorderColor_ColorSelected(object sender, RoutedEventArgs e)
-        {
-            string color = EyeBallBorderColorSelect.SelectedColorString;
-            App.globalConfig.Set("eyeball_border_color", color);
-            EyeBall.LineColor = new SolidColorBrush(EyeBallBorderColorSelect.SelectedColor);
         }
 
         private void EyeBallToggle_OptionSelected(object sender, RoutedEventArgs e)
@@ -81,6 +50,23 @@ namespace VisuALS_WPF_App
             }
 
             App.globalConfig.Set("dwell_indicator", dwellind);
+        }
+
+        private void EyeBallCustomization_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EyeBallSettings());
+        }
+
+        private void EyeTracker_ItemSelected(object sender, RoutedEventArgs e)
+        {
+            if (EyeTrackerCombo.SelectedItemName == "None")
+            {
+                GazeTrackerManager.SelectedGazeTracker = null;
+            }
+            else
+            {
+                GazeTrackerManager.SelectedGazeTracker = (IGazeTracker)EyeTrackerCombo.SelectedItem;
+            }
         }
     }
 }
