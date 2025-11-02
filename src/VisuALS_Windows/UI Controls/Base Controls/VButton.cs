@@ -166,7 +166,7 @@ namespace VisuALS_WPF_App
         private static HitTestFilterBehavior VButtonHitTestFilter(DependencyObject o)
         {
             FrameworkElement e = o as FrameworkElement;
-            if (e is VButton && (e as VButton).IsEnabled)
+            if (e is VButton && (e as VButton).IsEnabled && e.IsVisible)
             {
                 CurrentHitTestObject = e;
                 return HitTestFilterBehavior.Stop;

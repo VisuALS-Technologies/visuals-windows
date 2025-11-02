@@ -221,7 +221,8 @@
     <system:String x:Key="dst_fullscreen" xml:space="preserve">Pantalla Completa: </system:String>
     <system:String x:Key="dst_theme" xml:space="preserve">Tema: </system:String>
     <system:String x:Key="dst_select_theme">Selecciona una Tema:</system:String>
-    <system:String x:Key = "dst_accent_color" xml:space="preserve">Acentuar el color</system:String>
+    <system:String x:Key="dst_accent_color" xml:space="preserve">Acentuar el color</system:String>
+    <system:String x:Key="dst_web_browser" xml:space="preserve">Navegador de Internet: </system:String>
 
     <!-- Eye Tracking Settings -->
     <system:String x:Key="est_title">Ajustos del Registro Visual</system:String>

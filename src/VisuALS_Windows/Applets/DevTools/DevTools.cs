@@ -1,4 +1,10 @@
-﻿namespace VisuALS_WPF_App
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace VisuALS_WPF_App
 {
     /// <summary>
     /// The Dev Tools applet is meant to be used by the developers to provide some
@@ -35,7 +41,7 @@
         /// </summary>
         public override void InitializeSettingsValues()
         {
-
+            
         }
     }
 }

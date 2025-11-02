@@ -1,7 +1,7 @@
 [Setup]
-AppName=VisuALS_Windows
+AppName=VisuALS 3
 AppVersion=3.0.0.0
-DefaultDirName={autopf}\VisuALS_Windows
+DefaultDirName={autopf}\VisuALS-3
 DefaultGroupName=VisuALS
 UsePreviousAppDir=No
 
@@ -11,9 +11,9 @@ Source: "..\VisuALS_Windows\bin\x86\Release\Resources\*"; DestDir: "{app}\Resour
 Source: "..\VisuALS_Windows\bin\x86\Release\Update Management\*"; DestDir: "{app}\Update Management"; Permissions: everyone-full; Flags: recursesubdirs
 
 [Icons]
-Name: "{group}\VisuALS"; Filename: "{app}\VisuALS.exe"; WorkingDir: "{app}"; IconFilename: "{app}\Resources\visuals.ico"
-Name: "{commondesktop}\VisuALS"; Filename: "{app}\VisuALS.exe"; WorkingDir: "{app}"; IconFilename: "{app}\Resources\visuals.ico"
-Name: "{commonprograms}\VisuALS"; Filename: "{app}\VisuALS.exe"; WorkingDir: "{app}"; IconFilename: "{app}\Resources\visuals.ico"
+Name: "{group}\VisuALS"; Filename: "{app}\VisuALS.exe"; WorkingDir: "{app}"; IconFilename: "{app}\Resources\Images\visuals-icon.ico"
+Name: "{commondesktop}\VisuALS"; Filename: "{app}\VisuALS.exe"; WorkingDir: "{app}"; IconFilename: "{app}\Resources\Images\visuals-icon.ico"
+Name: "{commonprograms}\VisuALS"; Filename: "{app}\VisuALS.exe"; WorkingDir: "{app}"; IconFilename: "{app}\Resources\Images\visuals-icon.ico"
 
 [UninstallRun]
 RunOnceId: "SettingsOptions"; Filename: "{app}\VisuALS.exe"; Parameters: "uninstall_options"

@@ -28,6 +28,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <local:VButton x:Name="copyBtn"
                 Grid.Row="0"
@@ -59,12 +60,16 @@
                 Content="Reset All Text Predictions"/>
             <local:VButton Role="NotSpecified"
                 Grid.Row="4"
-                Click="ClearOutput_Click"
-                Content="Clear Output"/>
-            <local:VButton Role="NotSpecified"
-                Grid.Row="4"
                 Click="LoadTextTranslations_Click"
                 Content="Load Text Translations"/>
+            <local:VButton Role="NotSpecified"
+                Grid.Row="5"
+                Click="ListAssemblies_Click"
+                Content="List Assemblies"/>
+            <local:VButton Role="Delete"
+                Grid.Row="6"
+                Click="ClearOutput_Click"
+                Content="🗑️ Clear Output"/>
         </local:VGrid>
         <local:VScrollBox
             x:Name="outputScrollBox"

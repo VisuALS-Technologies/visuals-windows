@@ -229,6 +229,7 @@
     <system:String x:Key="dst_theme" xml:space="preserve">Theme: </system:String>
     <system:String x:Key="dst_select_theme">Select a theme:</system:String>
     <system:String x:Key="dst_accent_color">Accent Color</system:String>
+    <system:String x:Key="dst_web_browser" xml:space="preserve">Web Browser: </system:String>
 
     <!-- Eye Tracking Settings -->
     <system:String x:Key="est_title">Eye Tracking Settings</system:String>
@@ -275,7 +276,7 @@
     <system:String x:Key="tts_carl_pause">Carl's Pause</system:String>
     <system:String x:Key="tts_in_memory_of_carl">In memory of Carl Phelps</system:String>
     <system:String x:Key="tts_pause_description">Here you can pause for other things, like to watch TV, without worrying about accidentally clicking buttons. 
-        The only active button on this screen is the single back button, 'Exit Carl's Pause', which you can click to back to the Text To Speech page.</system:String>
+        The only active button on this screen is the single back button, 'Exit Carl's Pause', which you can click to get back to the Text To Speech page.</system:String>
     <system:String x:Key="tts_exit_carl_pause">Exit Carl's Pause</system:String>
 
     <!-- Web Browser -->

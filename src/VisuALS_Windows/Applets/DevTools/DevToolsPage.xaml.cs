@@ -2,7 +2,19 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Markup;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Xml;
 
 namespace VisuALS_WPF_App
 {
@@ -28,7 +40,7 @@ namespace VisuALS_WPF_App
         private void FindMissingTranslations_Click(object sender, RoutedEventArgs e)
         {
             List<ResourceDictionary> dicts = LanguageManager.GetLanguageDictionaries();
-
+            
             foreach (ResourceDictionary d1 in dicts)
             {
                 (outputScrollBox.DisplayContent as VTextBlock).Text += "\n\nLanguage Dictionary \"" + d1.Source.ToString() + "\" is missing the following keys:\n";
@@ -102,6 +114,8 @@ namespace VisuALS_WPF_App
             }
         }
 
+
+
         private void copyBtn_Click(object sender, RoutedEventArgs e)
         {
             Clipboard.SetText((outputScrollBox.DisplayContent as VTextBlock).Text);
@@ -110,13 +124,13 @@ namespace VisuALS_WPF_App
         private async void LoadTextTranslations_Click(object sender, RoutedEventArgs e)
         {
             DialogResponse response = await DialogWindow.Show(new VFileBrowser());
-            if (response.ResponseString != null)
+            if(response.ResponseObject != null)
             {
                 List<Tuple<string, string>> dict = new List<Tuple<string, string>>();
                 string key = "";
-                foreach (string line in File.ReadAllLines(response.ResponseObject as string))
+                foreach(string line in File.ReadAllLines(response.ResponseObject as string))
                 {
-                    if (!string.IsNullOrEmpty(line))
+                    if(!string.IsNullOrEmpty(line))
                     {
                         string sl = string.Join(":", line.Split(':').Skip(1));
                         if (key == "")
@@ -132,14 +146,29 @@ namespace VisuALS_WPF_App
                     }
                 }
                 dict = dict.OrderBy(x => x.Item1).ToList();
-                using (StreamWriter sw = new StreamWriter(Path.Combine(AppPaths.DocumentsPath, "exported_translations.xaml")))
+                string export_path = Path.Combine(AppPaths.DocumentsPath, "exported_translations.xaml");
+                using (StreamWriter sw = new StreamWriter(export_path))
                 {
-                    foreach (Tuple<string, string> kvp in dict)
+                    foreach(Tuple<string, string> kvp in dict)
                     {
                         sw.WriteLine("<system:String x:Key=\"" + kvp.Item1 + "\" xml:space=\"preserve\">" + kvp.Item2 + "</system:String>");
                     }
                 }
+                (outputScrollBox.DisplayContent as VTextBlock).Text += "Translations loaded successfully! Exported to " + export_path;
             }
+        }
+
+        private void ListAssemblies_Click(object sender, RoutedEventArgs e)
+        {
+            (outputScrollBox.DisplayContent as VTextBlock).Text += "Referenced assemblies:\n\n";
+            Assembly[] assemblies = Assembly.GetEntryAssembly().GetReferencedAssemblies()
+                .Select(Assembly.Load)
+                .ToArray();
+            foreach (Assembly assembly in assemblies)
+            {
+                (outputScrollBox.DisplayContent as VTextBlock).Text += assembly.GetName().Name + " " + assembly.GetName().Version + "\n";
+            }
+            System.Diagnostics.ProcessModuleCollection modules = System.Diagnostics.Process.GetCurrentProcess().Modules;
         }
     }
 }

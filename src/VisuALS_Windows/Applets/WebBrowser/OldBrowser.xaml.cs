@@ -105,7 +105,7 @@ namespace VisuALS_WPF_App
                 p.Y += b.ActualHeight / 2;
 
                 InputSimulator.SetCursor(Convert.ToInt32(p.X), Convert.ToInt32(p.Y));
-                phantomButtonGrid.Visibility = Visibility.Hidden;
+                phantomButtonGrid.IsHitTestVisible = false;
 
                 Task.Delay(100).ContinueWith(_ =>
                {
@@ -121,7 +121,7 @@ namespace VisuALS_WPF_App
                           InputSimulator.MouseButtonClick(InputSimulator.MouseButtons.LEFT);
                           InputSimulator.MouseButtonClick(InputSimulator.MouseButtons.LEFT);
                       }
-                      phantomButtonGrid.Visibility = Visibility.Visible;
+                      phantomButtonGrid.IsHitTestVisible = true;
                   });
                });
             }
@@ -266,12 +266,14 @@ namespace VisuALS_WPF_App
             {
                 browser.openKeyboard(url);
                 keyboardOpen = true;
+                phantomButtonGrid.IsHitTestVisible = false;
                 phantomButtonGrid.Visibility = Visibility.Hidden;
             }
             else
             {
                 browser.closeKeyboard();
                 keyboardOpen = false;
+                phantomButtonGrid.IsHitTestVisible = true;
                 phantomButtonGrid.Visibility = Visibility.Visible;
             }
         }
@@ -282,12 +284,14 @@ namespace VisuALS_WPF_App
             {
                 browser.openKeyboard();
                 keyboardOpen = true;
+                phantomButtonGrid.IsHitTestVisible = false;
                 phantomButtonGrid.Visibility = Visibility.Hidden;
             }
             else
             {
                 browser.closeKeyboard();
                 keyboardOpen = false;
+                phantomButtonGrid.IsHitTestVisible = true;
                 phantomButtonGrid.Visibility = Visibility.Visible;
             }
         }
