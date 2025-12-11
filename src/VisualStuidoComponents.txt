@@ -1,0 +1,2 @@
+Microsoft.Net.Component.4.8.SDK
+Microsoft.Component.MSBuild

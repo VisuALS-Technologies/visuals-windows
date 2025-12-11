@@ -169,6 +169,7 @@
     </Reference>
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Security.AccessControl, Version=6.0.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.AccessControl.6.0.1\lib\net461\System.Security.AccessControl.dll</HintPath>
     </Reference>
@@ -267,6 +268,11 @@
     <Compile Include="Applets\AppletMenu.xaml.cs">
       <DependentUpon>AppletMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Devices\AudioInputDevice.cs" />
+    <Compile Include="Devices\AudioOutputDevice.cs" />
+    <Compile Include="Devices\Device.cs" />
+    <Compile Include="Devices\EyeTrackerDevice.cs" />
+    <Compile Include="Devices\MouseGazeSimulator.cs" />
     <Compile Include="DialogWindow.cs" />
     <Compile Include="Gaze Tracking\IGazeTracker.cs" />
     <Compile Include="Gaze Tracking\GazeTrackerManager.cs" />
@@ -309,6 +315,7 @@
     <Compile Include="Utils\File Utilities\AppPaths.cs" />
     <Compile Include="Utils\File Utilities\SettingValue.cs" />
     <Compile Include="Utils\File Utilities\FileUtils.cs" />
+    <Compile Include="Utils\NAudioExtensions.cs" />
     <Compile Include="Utils\System Utilities\InputSimulator.cs" />
     <Compile Include="Keyboards\Keyboard Framework\KeyboardLayouts.cs" />
     <Compile Include="Keyboards\Keyboard Framework\VKeyboardTab.cs" />
