@@ -120,7 +120,7 @@ All applet classes have two [SettingsFile](#settings) objects by default named C
 
 # **Settings** {#settings}
 
-Settings for the VisuALS application are stored in [JSON](https://www.w3schools.com/whatis/whatis_json.asp) files in the folder VisuALS under the users AppData/local folder. There are several important utility classes for dealing with these settings files. These classes are located under Utilities/FileUtilities:
+Settings for the VisuALS application are stored in [JSON](https://www.w3schools.com/whatis/whatis_json.asp) files under the AppData/local/VisuALS folder. There are several important utility classes for dealing with these settings files. These classes are located under Utilities/FileUtilities:
 
 ![](assets/solution_structure/settings.png)
 
