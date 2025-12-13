@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VisuALS_WPF_App
 {
-    public class AudioOutputDeviceManager : ConfigurableDeviceManager<AudioOutputDevice>
+    public class AudioOutputDeviceManager : ConfigurableDeviceManager
     {
         public enum Role
         {
@@ -24,17 +24,17 @@ namespace VisuALS_WPF_App
             Config.Initialize<string>("preferred_alarm_device_id", enumerator.GetDefaultAudioEndpoint(DataFlow.Render, NAudio.CoreAudioApi.Role.Communications).ID);
             Config.Initialize<string>("preferred_speech_device_id", enumerator.GetDefaultAudioEndpoint(DataFlow.Render, NAudio.CoreAudioApi.Role.Communications).ID);
         }
-        override public List<AudioOutputDevice> ListDevices()
+        override public List<Device> ListDevices()
         {
-            return enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active).Select(dev => new AudioOutputDevice(dev)).ToList();
+            return enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active).Select(dev => new AudioOutputDevice(dev)).ToList<Device>();
         }
-        override public AudioOutputDevice GetDeviceByID(string id)
+        override public Device GetDeviceByID(string id)
         {
             return new AudioOutputDevice(enumerator.GetDevice(id));
         }
         public AudioOutputDevice GetPreferredDevice(Role role)
         {
-            return GetDeviceByID(Config.Get<string>($"preferred_{role.ToString().ToLower()}_device_id"));
+            return GetDeviceByID(Config.Get<string>($"preferred_{role.ToString().ToLower()}_device_id")) as AudioOutputDevice;
         }
         public void SetPreferredDevice(AudioOutputDevice device, Role role)
         {

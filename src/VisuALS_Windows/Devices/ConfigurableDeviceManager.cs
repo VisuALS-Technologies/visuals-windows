@@ -9,7 +9,7 @@ using NAudio.CoreAudioApi;
 
 namespace VisuALS_WPF_App
 {
-    public abstract class ConfigurableDeviceManager<T> : DeviceManager<T> where T: Device
+    public abstract class ConfigurableDeviceManager : DeviceManager
     {
         public SettingsFile Config;
         public ConfigurableDeviceManager(string device_manager_name)

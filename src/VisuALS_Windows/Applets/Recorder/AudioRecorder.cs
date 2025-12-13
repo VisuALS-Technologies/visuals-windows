@@ -77,7 +77,7 @@ namespace VisuALS_WPF_App
         /// </summary>
         /// <param name="fileName"> Name of file to open </param>
         /// <param name="playbackStopped"> Event handler to handle playback stopped event</param>
-        public void OpenFile(string fileName, EventHandler<StoppedEventArgs> playbackStopped)
+        public void OpenFile(string fileName, EventHandler<NAudio.Wave.StoppedEventArgs> playbackStopped)
         {
             reader = new WaveFileReader(fileName);
             output = new WaveOut();

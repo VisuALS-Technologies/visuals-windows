@@ -13,7 +13,8 @@ namespace VisuALS_WPF_App
             new TextToSpeech(),
             new WebBrowser(),
             new FileBrowser(),
-            new PhotoViewer()
+            new PhotoViewer(),
+            new DevManager()
         };
 
         static public List<Applet> ActiveApplets;

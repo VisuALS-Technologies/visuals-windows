@@ -28,12 +28,27 @@ namespace VisuALS_WPF_App
             WMIClass = sysdevtype.wmi_class;
             DeviceType = sysdevtype.device_type;
             IconEmoji = sysdevtype.icon_emoji;
-            DeviceID = device["DeviceID"].ToString();
-            Name = device["FriendlyName"].ToString();
+
             foreach (var prop in device.Properties)
             {
-                Info[prop.Name] = prop.Value.ToString();
+                if (prop.Value != null)
+                    if (prop.Value.GetType().IsArray)
+                        Info[prop.Name] = "[" + string.Join(", ", (prop.Value as Array).Cast<object>()) + "]";
+                    else
+                        Info[prop.Name] = prop.Value?.ToString() ?? "null";
             }
+
+            if (Info.ContainsKey("FriendlyName"))
+                Name = Info["FriendlyName"];
+            else if (Info.ContainsKey("Name"))
+                Name = Info["Name"];
+            else
+                Name = "Unknown Device";
+
+            if (Info.ContainsKey("DeviceID"))
+                DeviceID = Info["DeviceID"];
+            else
+                DeviceID = "null";
         }
     }
 }

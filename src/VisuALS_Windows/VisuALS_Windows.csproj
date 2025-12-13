@@ -218,6 +218,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Applets\AppletManager.cs" />
+    <Compile Include="Applets\DeviceManager\DevManager.cs" />
+    <Compile Include="Applets\DeviceManager\DevManagerPage.xaml.cs">
+      <DependentUpon>DevManagerPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Applets\PhotoViewer\PhotoViewerSettings.xaml.cs">
       <DependentUpon>PhotoViewerSettings.xaml</DependentUpon>
     </Compile>
@@ -276,6 +280,7 @@
     <Compile Include="Devices\ConfigurableDevice.cs" />
     <Compile Include="Devices\Device.cs" />
     <Compile Include="Devices\ConfigurableDeviceManager.cs" />
+    <Compile Include="Devices\DeviceHelper.cs" />
     <Compile Include="Devices\SystemDevice.cs" />
     <Compile Include="Devices\SystemDeviceManager.cs" />
     <Compile Include="Devices\DeviceManager.cs" />
@@ -451,6 +456,10 @@
     <Compile Include="UI Controls\VWindow.xaml.cs">
       <DependentUpon>VWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Applets\DeviceManager\DevManagerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Applets\PhotoViewer\PhotoViewerSettings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

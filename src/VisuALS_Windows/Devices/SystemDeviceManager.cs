@@ -9,7 +9,7 @@ using System.Windows.Media;
 
 namespace VisuALS_WPF_App
 {
-    public class SystemDeviceManager : DeviceManager<SystemDevice>
+    public class SystemDeviceManager : DeviceManager
     {
         public static List<SystemDeviceType> DeviceTypes = new List<SystemDeviceType>() {
             new SystemDeviceType("dev_keyboard", "Win32_Keyboard", "⌨"),
@@ -22,7 +22,7 @@ namespace VisuALS_WPF_App
             new SystemDeviceType("dev_temperature_probe", "Win32_TemperatureProbe", "🌡️"),
             new SystemDeviceType("dev_optical_drive", "Win32_CDROMDrive", "💿"),
             new SystemDeviceType("dev_disk_drive", "Win32_DiskDrive", "💽"),
-            new SystemDeviceType("dev_floppy_drive", "Win32_FloppyDrive", "💾"),
+            //new SystemDeviceType("dev_floppy_drive", "Win32_FloppyDrive", "💾"),
             new SystemDeviceType("dev_memory", "Win32_MemoryDevice", "💾"),
             new SystemDeviceType("dev_network_adapter", "Win32_NetworkAdapter", "🌐"),
             new SystemDeviceType("dev_sound_device", "Win32_SoundDevice", "🔊"),
@@ -33,7 +33,7 @@ namespace VisuALS_WPF_App
             new SystemDeviceType("dev_battery", "Win32_PortableBattery", "🔋"),
             new SystemDeviceType("dev_current_probe", "Win32_CurrentProbe", "⚡"),
             new SystemDeviceType("dev_voltage_probe", "Win32_VoltageProbe", "⚡"),
-            new SystemDeviceType("dev_power_supply", "Win32_PowerSupply", "⚡"),
+            //new SystemDeviceType("dev_power_supply", "Win32_PowerSupply", "⚡"),
             new SystemDeviceType("dev_refrigeration", "Win32_Refrigeration", "❄️"),
             new SystemDeviceType("dev_tape_drive", "Win32_TapeDrive", "📼"),
             new SystemDeviceType("dev_parallel_port", "Win32_ParallelPort", "🔌"),
@@ -44,7 +44,7 @@ namespace VisuALS_WPF_App
             new SystemDeviceType("dev_hub", "Win32_USBHub", "🔌"),
             new SystemDeviceType("dev_onboard_device", "Win32_OnBoardDevice", "💻"),
             new SystemDeviceType("dev_IDE_controller", "Win32_IDEController", "💽"),
-            new SystemDeviceType("dev_floppy_controller", "Win32_FloppyController", "💾"),
+            //new SystemDeviceType("dev_floppy_controller", "Win32_FloppyController", "💾"),
             new SystemDeviceType("dev_bus", "Win32_Bus", "🚌"),
             new SystemDeviceType("dev_firewire_controller", "Win32_1394Controller", "🔌"),
             new SystemDeviceType("dev_infrared_device", "Win32_InfraredDevice", "📡"),
@@ -52,9 +52,9 @@ namespace VisuALS_WPF_App
             new SystemDeviceType("dev_enclosure", "Win32_SystemEnclosure", "🖥️"),
             new SystemDeviceType("dev_bios", "Win32_BIOS", "🖥️")
         };
-        override public List<SystemDevice> ListDevices()
+        override public List<Device> ListDevices()
         {
-            List<SystemDevice> devices = new List<SystemDevice>();
+            List<Device> devices = new List<Device>();
             foreach (var sysdevtype in DeviceTypes)
             {
                 ManagementObjectCollection objs = new ManagementObjectSearcher("SELECT * FROM " + sysdevtype.wmi_class).Get();
@@ -65,7 +65,7 @@ namespace VisuALS_WPF_App
             }
             return devices;
         }
-        override public SystemDevice GetDeviceByID(string id)
+        override public Device GetDeviceByID(string id)
         {
             return ListDevices().Find(d => d.DeviceID == id);
         }

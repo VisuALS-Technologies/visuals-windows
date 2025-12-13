@@ -20,8 +20,15 @@ namespace VisuALS_WPF_App
             Name = device.FriendlyName;
             for (int i = 0; i < device.Properties.Count; i++)
             {
-                string prop_name = MMDeviceUtils.NameFromPropertyKey(device.Properties[i].Key);
-                Info[prop_name] = device.Properties[i].Value.ToString();
+                try
+                {
+                    string prop_name = MMDeviceUtils.NameFromPropertyKey(device.Properties[i].Key);
+                    Info[prop_name] = device.Properties[i].Value.ToString();
+                }
+                catch
+                {
+                    // Ignore properties that can't be read
+                }
             }
             output = new WasapiOut(device, AudioClientShareMode.Shared, false, 100);
         }
