@@ -6,10 +6,9 @@ namespace VisuALS_WPF_App
 {
     public class MouseGazeSimulator : EyeTrackerDevice
     {
-        public MouseGazeSimulator() : base(Guid.Empty)
+        public MouseGazeSimulator() : base("mouse_gaze_simulator")
         {
-            DeviceName = "Mouse Gaze Simulator";
-            ManufacturerName = "VisuALS";
+            Name = "Mouse Gaze Simulator";
             IconEmoji = "🖱️";
         }
         public override Point GazePoint

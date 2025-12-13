@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VisuALS_WPF_App</RootNamespace>
     <AssemblyName>VisuALS</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -62,7 +62,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>visuals-logo.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>46985B266B56B1AAC9508567597A596AF41B2270</ManifestCertificateThumbprint>
@@ -268,9 +269,16 @@
     <Compile Include="Applets\AppletMenu.xaml.cs">
       <DependentUpon>AppletMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Devices\AudioInputDeviceManager.cs" />
+    <Compile Include="Devices\AudioOutputDeviceManager.cs" />
     <Compile Include="Devices\AudioInputDevice.cs" />
     <Compile Include="Devices\AudioOutputDevice.cs" />
+    <Compile Include="Devices\ConfigurableDevice.cs" />
     <Compile Include="Devices\Device.cs" />
+    <Compile Include="Devices\ConfigurableDeviceManager.cs" />
+    <Compile Include="Devices\SystemDevice.cs" />
+    <Compile Include="Devices\SystemDeviceManager.cs" />
+    <Compile Include="Devices\DeviceManager.cs" />
     <Compile Include="Devices\EyeTrackerDevice.cs" />
     <Compile Include="Devices\MouseGazeSimulator.cs" />
     <Compile Include="DialogWindow.cs" />
@@ -315,7 +323,7 @@
     <Compile Include="Utils\File Utilities\AppPaths.cs" />
     <Compile Include="Utils\File Utilities\SettingValue.cs" />
     <Compile Include="Utils\File Utilities\FileUtils.cs" />
-    <Compile Include="Utils\NAudioExtensions.cs" />
+    <Compile Include="Utils\MMDeviceUtils.cs" />
     <Compile Include="Utils\System Utilities\InputSimulator.cs" />
     <Compile Include="Keyboards\Keyboard Framework\KeyboardLayouts.cs" />
     <Compile Include="Keyboards\Keyboard Framework\VKeyboardTab.cs" />

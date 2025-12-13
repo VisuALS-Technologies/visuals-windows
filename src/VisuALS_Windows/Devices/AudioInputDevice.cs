@@ -1,27 +1,50 @@
 ﻿using System;
+using System.Windows.Media;
+using NAudio.CoreAudioApi;
 using NAudio.Wave;
 
 namespace VisuALS_WPF_App
 {
-    public class AudioInputDevice : Device
+    public class AudioInputDevice : ConfigurableDevice
     {
-        WaveIn waveIn;
-        public AudioInputDevice(Guid guid) : base(guid)
+        private WasapiCapture capture;
+        private WaveFileWriter writer;
+        public const int DEFAULT_SAMPLE_RATE = 44100;
+        public bool isRecording { get; private set; }
+
+        public AudioInputDevice(MMDevice device) : base(device.ID)
         {
-            DeviceName = "Unknown Audio Input";
             IconEmoji = "🎙";
-            for (int i = 0; i < WaveIn.DeviceCount; i++)
+            DeviceType = "dev_audio_input";
+            IconSource = device.IconPath;
+            Name = device.FriendlyName;
+            for (int i = 0; i < device.Properties.Count; i++)
             {
-                var caps = WaveIn.GetCapabilities(i);
-                if (caps.NameGuid == guid)
-                {
-                    waveIn = new WaveIn() { DeviceNumber = i };
-                    DeviceName = caps.ProductName;
-                    ManufacturerGUID = caps.ManufacturerGuid;
-                    ManufacturerName = caps.ManufacturerName();
-                    break;
-                }
+                string prop_name = MMDeviceUtils.NameFromPropertyKey(device.Properties[i].Key);
+                Info[prop_name] = device.Properties[i].Value.ToString();
             }
+            capture = new WasapiCapture(device);
+            capture.DataAvailable += capture_DataAvailable;
+        }
+
+        public void StartRecording(string filepath)
+        {
+            isRecording = true;
+            capture.StartRecording();
+            writer = new WaveFileWriter(filepath, capture.WaveFormat);
+        }
+
+        public void StopRecording()
+        {
+            isRecording = false;
+            capture.StopRecording();
+            writer.Close();
+        }
+
+        private void capture_DataAvailable(object sender, WaveInEventArgs e)
+        {
+            writer.Write(e.Buffer, 0, e.BytesRecorded);
+            writer.Flush();
         }
     }
 }
