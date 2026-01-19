@@ -323,6 +323,7 @@
     <Compile Include="Utils\File Utilities\SettingValue.cs" />
     <Compile Include="Utils\File Utilities\FileUtils.cs" />
     <Compile Include="Utils\MMDeviceUtils.cs" />
+    <Compile Include="Utils\SpeechUtils.cs" />
     <Compile Include="Utils\System Utilities\InputSimulator.cs" />
     <Compile Include="Keyboards\Keyboard Framework\KeyboardLayouts.cs" />
     <Compile Include="Keyboards\Keyboard Framework\VKeyboardTab.cs" />

@@ -1,4 +1,5 @@
-﻿using System.Management;
+﻿using System;
+using System.Management;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -10,6 +11,12 @@ namespace VisuALS_WPF_App
         {
             get { return (object)base.GetValue(TextSourceProperty); }
             set { base.SetValue(TextSourceProperty, value); }
+        }
+
+        public event EventHandler<NAudio.Wave.StoppedEventArgs> PlaybackStopped
+        {
+            add { outputDevice.PlaybackStopped += value; }
+            remove { outputDevice.PlaybackStopped -= value; }
         }
 
         public static readonly DependencyProperty TextSourceProperty = DependencyProperty.Register(

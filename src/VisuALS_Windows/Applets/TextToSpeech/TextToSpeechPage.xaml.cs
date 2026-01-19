@@ -39,6 +39,7 @@ namespace VisuALS_WPF_App
             keyboard.Layout = KeyboardManager.GetCurrentLayout();
             keyboard.FocusElement = textfield;
             AutoSave = new PeriodicBackgroundProcess(AutoSaveRunFunction, 1000, this);
+            speakBtn.PlaybackStopped += SpeakBtn_PlaybackStopped;
         }
 
         /// <summary>
@@ -91,7 +92,8 @@ namespace VisuALS_WPF_App
                 DialogResponse r = await DialogWindow.ShowList(LanguageManager.Tokens["tts_recent"], recents, 4, 1);
                 if (r.ResponseObject != null)
                 {
-                    SpeechFactory.instance.Speak(r.ResponseString);
+                    speakBtn.TextSource = r.ResponseString;
+                    speakBtn.RaiseEvent(new RoutedEventArgs(VSpeakButton.ClickEvent));
                     AddRecent(r.ResponseString);
                 }
             }
@@ -99,6 +101,11 @@ namespace VisuALS_WPF_App
             {
                 await DialogWindow.ShowMessage(LanguageManager.Tokens["tts_no_recents"]);
             }
+        }
+
+        private void SpeakBtn_PlaybackStopped(object sender, NAudio.Wave.StoppedEventArgs e)
+        {
+            speakBtn.TextSource = textfield;
         }
 
         /// <summary>
@@ -115,7 +122,8 @@ namespace VisuALS_WPF_App
                 DialogResponse r = await DialogWindow.ShowList(categoryName, phrases, 4, 1);
                 if (r.ResponseObject != null)
                 {
-                    SpeechFactory.instance.Speak(r.ResponseString);
+                    speakBtn.TextSource = r.ResponseString;
+                    speakBtn.RaiseEvent(new RoutedEventArgs(VSpeakButton.ClickEvent));
                     AddRecent(r.ResponseString);
                 }
             }

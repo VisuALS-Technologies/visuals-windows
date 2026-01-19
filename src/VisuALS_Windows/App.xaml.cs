@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Speech.Synthesis;
 using System.Windows;
 using System.Windows.Media;
 
@@ -20,7 +21,6 @@ namespace VisuALS_WPF_App
         public double count = 0;
 
         //factories/hosts
-        private SpeechFactory _speechFactory;
         public static Predictor predictor = new Predictor();
         public string predictionDataDBPath;
         public string englishWordsListFilePath;
@@ -88,9 +88,6 @@ namespace VisuALS_WPF_App
             try
             {
                 EnforceSingleInstance();
-
-                // Create the speech synthesis instance
-                _speechFactory = SpeechFactory.Instance;
 
                 // Create important directories
                 AppPaths.Initialize();
@@ -163,7 +160,7 @@ namespace VisuALS_WPF_App
             //Initialize settings values
             App.globalConfig.Initialize("language", "English");
             App.globalConfig.Initialize("keyboard", "kl_en_classic_qwerty");
-            App.globalConfig.Initialize("tts_voice", SpeechFactory.instance.InstalledVoiceNames[0]);
+            App.globalConfig.Initialize("tts_voice", SpeechUtils.InstalledVoiceNames[0]);
             App.globalConfig.Initialize("mute_alarm", false);
             App.globalConfig.Initialize("verbal_confirmations", false);
             App.globalConfig.Initialize("fontsizes", StyleControl.GetFontSizes());
@@ -181,7 +178,6 @@ namespace VisuALS_WPF_App
             //Apply initialized values
             LanguageManager.CurrentLanguage = App.globalConfig.Get<string>("language");
             KeyboardManager.CurrentLayoutName = App.globalConfig.Get<string>("keyboard");
-            SpeechFactory.instance.Voice = App.globalConfig.Get<string>("tts_voice");
             FontSizes fontSizes = App.globalConfig.Get<FontSizes>("fontsizes");
             StyleControl.SetFontSizes(fontSizes);
             StyleControl.SetTheme(App.globalConfig.Get<string>("theme"));

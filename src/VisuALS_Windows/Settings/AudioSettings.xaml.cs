@@ -12,7 +12,7 @@ namespace VisuALS_WPF_App
         public AudioSettings()
         {
             InitializeComponent();
-            TTSVoiceCombo.SetItems(SpeechFactory.instance.LabelsAndVoiceNamesDictionary);
+            TTSVoiceCombo.SetItems(SpeechUtils.LabelsAndVoiceNamesDictionary);
             TTSVoiceCombo.SelectedItem = App.globalConfig.Get<string>("tts_voice");
             MuteAlarmToggle.Value = App.globalConfig.Get<bool>("mute_alarm");
             ConfirmationsToggle.Value = App.globalConfig.Get<bool>("verbal_confirmations");
@@ -31,12 +31,11 @@ namespace VisuALS_WPF_App
         private void TTSVoice_ItemSelected(object sender, RoutedEventArgs e)
         {
             App.globalConfig.Set("tts_voice", TTSVoiceCombo.SelectedItem);
-            SpeechFactory.instance.Voice = (string)TTSVoiceCombo.SelectedItem;
         }
 
         private void TestTTSVoice_Click(object sender, RoutedEventArgs e)
         {
-            SpeechFactory.Instance.Speak($"{LanguageManager.Tokens["ast_test_1"]} {SpeechFactory.instance.Voice} {LanguageManager.Tokens["ast_test_2"]}");
+            SpeechUtils.Speak($"{LanguageManager.Tokens["ast_test_1"]} {App.globalConfig.Get<string>("tts_voice")} {LanguageManager.Tokens["ast_test_2"]}");
         }
 
         private void Confirmations_OptionSelected(object sender, RoutedEventArgs e)

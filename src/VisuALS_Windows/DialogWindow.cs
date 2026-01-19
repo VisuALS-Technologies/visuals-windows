@@ -118,7 +118,7 @@ namespace VisuALS_WPF_App
         {
             if (message != null && message != "" && App.globalConfig.Get<bool>("verbal_confirmations"))
             {
-                SpeechFactory.Instance.Speak(message);
+                SpeechUtils.Speak(message);
             }
         }
 

@@ -35,7 +35,7 @@
             Grid.Column="0"
             Grid.RowSpan="5"/>
         
-        <local:VSpeakButton
+        <local:VSpeakButton x:Name="speakBtn"
                 Grid.Column="1"
                 Grid.RowSpan="2"
                 Click="Speak_Click"
