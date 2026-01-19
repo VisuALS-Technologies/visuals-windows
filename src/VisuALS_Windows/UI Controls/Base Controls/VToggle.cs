@@ -117,28 +117,23 @@ namespace VisuALS_WPF_App
             {
                 tg.SelectedOption = tg.FalseOption;
             }
-            tg.UpdateContent();
-            // We need to wait until the VToggle is loaded to trigger the event
-            // in case the event handlers deal with the UI
-            if (tg.IsLoaded)
-            {
-                RoutedEventArgs args = new RoutedEventArgs(VToggle.OptionSelectedEvent);
-                tg.RaiseEvent(args);
-            }
         }
 
         private static void SelectedOptionChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
             VToggle tg = o as VToggle;
+
             tg.UpdateContent();
-            if ((string)e.NewValue == tg.TrueOption && tg.Value != true)
+
+            if ((string)e.NewValue == tg.TrueOption && !tg.Value)
             {
                 tg.Value = true;
             }
-            else if ((string)e.NewValue == tg.FalseOption && tg.Value != false)
+            else if ((string)e.NewValue == tg.FalseOption && tg.Value)
             {
                 tg.Value = false;
             }
+
             // We need to wait until the VToggle is loaded to trigger the event
             // in case the event handlers deal with the UI
             if (tg.IsLoaded)

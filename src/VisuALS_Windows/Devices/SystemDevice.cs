@@ -7,18 +7,6 @@ using System.Management;
 
 namespace VisuALS_WPF_App
 {
-    public struct SystemDeviceType
-    {
-        public string device_type;
-        public string wmi_class;
-        public string icon_emoji;
-        public SystemDeviceType(string dev_type, string wmi_cls, string icon_emo)
-        {
-            device_type = dev_type;
-            wmi_class = wmi_cls;
-            icon_emoji = icon_emo;
-        }
-    }
 
     public class SystemDevice : Device
     {

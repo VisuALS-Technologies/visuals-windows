@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Management;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace VisuALS_WPF_App
@@ -14,6 +15,8 @@ namespace VisuALS_WPF_App
         public static readonly DependencyProperty TextSourceProperty = DependencyProperty.Register(
             "TextSource", typeof(object), typeof(VSpeakButton), new PropertyMetadata(default(object)));
 
+        private AudioOutputDevice outputDevice;
+
         public VSpeakButton()
         {
             TrueOption = LanguageManager.Tokens["speak"];
@@ -21,7 +24,8 @@ namespace VisuALS_WPF_App
             Value = true;
             Role = ButtonRole.Speech;
             OptionSelected += SpeakButton_OptionSelected;
-            SpeechFactory.Instance.SpeakCompleted += Instance_SpeakCompleted;
+            outputDevice = DeviceManager.GetPreferredAudioOutputDevice(AudioOutputRole.Speech);
+            outputDevice.PlaybackStopped += Instance_SpeakCompleted;
         }
 
         private string GetText()
@@ -47,23 +51,20 @@ namespace VisuALS_WPF_App
             }
         }
 
-        private void Instance_SpeakCompleted(object sender, System.Speech.Synthesis.SpeakCompletedEventArgs e)
+        private void Instance_SpeakCompleted(object sender, NAudio.Wave.StoppedEventArgs e)
         {
-            if (e.Cancelled == false)
-            {
-                Value = true;
-            }
+            Value = true;
         }
 
         private void SpeakButton_OptionSelected(object sender, System.Windows.RoutedEventArgs e)
         {
             if (Value == false)
             {
-                SpeechFactory.Instance.Speak(GetText());
+                outputDevice.Speak(GetText());
             }
             else
             {
-                SpeechFactory.Instance.Stop();
+                outputDevice.Stop();
             }
         }
     }

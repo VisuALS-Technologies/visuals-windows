@@ -218,10 +218,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Applets\AppletManager.cs" />
-    <Compile Include="Applets\DeviceManager\DevManager.cs" />
-    <Compile Include="Applets\DeviceManager\DevManagerPage.xaml.cs">
-      <DependentUpon>DevManagerPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Applets\PhotoViewer\PhotoViewerSettings.xaml.cs">
       <DependentUpon>PhotoViewerSettings.xaml</DependentUpon>
     </Compile>
@@ -273,17 +269,12 @@
     <Compile Include="Applets\AppletMenu.xaml.cs">
       <DependentUpon>AppletMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Devices\AudioInputDeviceManager.cs" />
-    <Compile Include="Devices\AudioOutputDeviceManager.cs" />
     <Compile Include="Devices\AudioInputDevice.cs" />
     <Compile Include="Devices\AudioOutputDevice.cs" />
     <Compile Include="Devices\ConfigurableDevice.cs" />
     <Compile Include="Devices\Device.cs" />
-    <Compile Include="Devices\ConfigurableDeviceManager.cs" />
-    <Compile Include="Devices\DeviceHelper.cs" />
-    <Compile Include="Devices\SystemDevice.cs" />
-    <Compile Include="Devices\SystemDeviceManager.cs" />
     <Compile Include="Devices\DeviceManager.cs" />
+    <Compile Include="Devices\SystemDevice.cs" />
     <Compile Include="Devices\EyeTrackerDevice.cs" />
     <Compile Include="Devices\MouseGazeSimulator.cs" />
     <Compile Include="DialogWindow.cs" />
@@ -317,6 +308,9 @@
     </Compile>
     <Compile Include="Settings\UninstallOptions.xaml.cs">
       <DependentUpon>UninstallOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI Controls\VCollapseBox.xaml.cs">
+      <DependentUpon>VCollapseBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Update Management\OverhaulFileMigration.cs" />
     <Compile Include="Settings\LanguageSettings.xaml.cs">
@@ -376,7 +370,6 @@
     <Compile Include="Utils\File Utilities\DocumentFolder.cs" />
     <Compile Include="Utils\File Utilities\SettingsFile.cs" />
     <Compile Include="Utils\File Utilities\SettingsManager.cs" />
-    <Compile Include="Utils\SpeechFactory.cs" />
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
@@ -456,10 +449,6 @@
     <Compile Include="UI Controls\VWindow.xaml.cs">
       <DependentUpon>VWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Applets\DeviceManager\DevManagerPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Applets\PhotoViewer\PhotoViewerSettings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -696,6 +685,10 @@
     <Page Include="UI Controls\VBanner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI Controls\VCollapseBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI Controls\VScrollBox.xaml">
       <Generator>MSBuild:Compile</Generator>

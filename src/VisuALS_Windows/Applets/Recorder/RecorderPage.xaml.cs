@@ -2,6 +2,7 @@
 using System;
 using System.Threading;
 using System.Windows;
+using System.Windows.Input;
 
 namespace VisuALS_WPF_App
 {
@@ -11,7 +12,8 @@ namespace VisuALS_WPF_App
     public partial class RecorderPage : AppletPage
     {
         #region Local Variables
-        readonly AudioRecorder recorder;
+        private AudioInputDevice inputDevice;
+        private AudioOutputDevice outputDevice;
         public DocumentFolder RecordingsFolder;
         PeriodicBackgroundProcess AutoSave;
         private string recordingFileName;
@@ -37,8 +39,8 @@ namespace VisuALS_WPF_App
 
             UpdateList();
 
-            // Setup the recorder
-            recorder = new AudioRecorder();
+            inputDevice = DeviceManager.GetPreferredAudioInputDevice();
+            outputDevice = DeviceManager.GetPreferredAudioOutputDevice(AudioOutputRole.Media);
 
             AutoSave = new PeriodicBackgroundProcess(AutoSaveRunFunction, 1000, this);
         }
@@ -110,7 +112,7 @@ namespace VisuALS_WPF_App
         private async void Record_Button_Click(object sender, RoutedEventArgs e)
         {
             // If not recording right now
-            if (!recorder.IsRecording)
+            if (!inputDevice.isRecording)
             {
                 Record_Button.Content = LanguageManager.Tokens["ar_stop_recording"];
                 Play_Button.IsEnabled = false;
@@ -118,12 +120,12 @@ namespace VisuALS_WPF_App
                 recordingFileName = RecordingsFolder.GetNewFileName();
                 RecordingsFolder.NewFile(recordingFileName, "wav");
                 Recording_Indicator.Visibility = Visibility.Visible;
-                recorder.Record(RecordingsFolder.GetFilePath(recordingFileName));
+                inputDevice.StartRecording(RecordingsFolder.GetFilePath(recordingFileName));
             }
-            else if (recorder.IsRecording)
+            else if (inputDevice.isRecording)
             {
                 Record_Button.Content = LanguageManager.Tokens["ar_record"];
-                recorder.StopRecording();
+                inputDevice.StopRecording();
                 Recording_Indicator.Visibility = Visibility.Hidden;
 
                 DialogResponse r = await DialogWindow.ShowKeyboardInput("Enter name for recording");
@@ -154,14 +156,14 @@ namespace VisuALS_WPF_App
         /// <param name="e"></param>
         private void Play_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (recorder.IsPlaying)
+            if (outputDevice.isPlaying)
             {
-                recorder.Pause();
+                outputDevice.Pause();
                 Play_Button.Content = LanguageManager.Tokens["pb_play"];
             }
-            else if (recorder.IsPaused)
+            else if (outputDevice.isPaused)
             {
-                recorder.Play();
+                outputDevice.Play(RecordingsFolder.GetFilePath(recordingFileName));
                 Play_Button.Content = LanguageManager.Tokens["pb_pause"];
             }
             else
@@ -178,7 +180,7 @@ namespace VisuALS_WPF_App
         /// <param name="e"></param>
         private void Replay_Button_Click(object sender, RoutedEventArgs e)
         {
-            recorder.StopPlayback();
+            outputDevice.Stop();
             PlaySelectedRecording();
             Play_Button.Content = LanguageManager.Tokens["pb_pause"];
         }
@@ -190,7 +192,7 @@ namespace VisuALS_WPF_App
         /// <param name="e"></param>
         private async void Rename_Button_Click(object sender, RoutedEventArgs e)
         {
-            recorder.StopPlayback();
+            outputDevice.Stop();
             if (RecordingsFolder.FileExists(RecordingsList.SelectedItemString))
             {
                 DialogResponse r = await DialogWindow.ShowKeyboardInput("Enter new name for file: " + RecordingsList.SelectedItemString);
@@ -221,7 +223,7 @@ namespace VisuALS_WPF_App
         /// <param name="e"></param>
         private void Delete_Recording_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (!recorder.IsPlaying)
+            if (!outputDevice.isPlaying)
             {
                 RecordingsFolder.DeleteFile(RecordingsList.SelectedItemString);
                 UpdateList();
@@ -239,8 +241,8 @@ namespace VisuALS_WPF_App
         {
             if (RecordingsFolder.FileExists(RecordingsList.SelectedItemString))
             {
-                recorder.OpenFile(RecordingsFolder.GetFilePath(RecordingsList.SelectedItemString), AudioEndOfRecording);
-                recorder.Play();
+                outputDevice.Play(RecordingsFolder.GetFilePath(RecordingsList.SelectedItemString));
+                outputDevice.PlaybackStopped += AudioEndOfRecording;
             }
             else
             {
@@ -255,8 +257,6 @@ namespace VisuALS_WPF_App
         /// <param name="e"></param>
         private void AudioEndOfRecording(object sender, StoppedEventArgs e)
         {
-            Thread.Sleep(recorder.Output.DesiredLatency + 100);
-            recorder.StopPlayback();
             Play_Button.Content = LanguageManager.Tokens["pb_play"];
         }
         #endregion

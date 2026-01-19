@@ -13,8 +13,7 @@ namespace VisuALS_WPF_App
             new TextToSpeech(),
             new WebBrowser(),
             new FileBrowser(),
-            new PhotoViewer(),
-            new DevManager()
+            new PhotoViewer()
         };
 
         static public List<Applet> ActiveApplets;
@@ -55,7 +54,8 @@ namespace VisuALS_WPF_App
         {
             SettingsManager.InitializeValue("global\\config", "active_applets", new string[] { "ap_web_browser", "ap_notepad", "ap_text_to_speech", "ap_photo_viewer", "ap_recorder" });
             string[] applet_names = SettingsManager.Get<string[]>("global\\config", "active_applets");
-            ActiveApplets = applet_names.Select(x => GetApplet(x)).ToList();
+            
+            ActiveApplets = applet_names.Where(x => AppletNames.Contains(x)).Select(x => GetApplet(x)).ToList();
         }
 
         static public void ActivateApplet<T>()
