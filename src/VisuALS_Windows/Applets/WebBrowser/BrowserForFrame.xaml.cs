@@ -107,7 +107,7 @@ namespace VisuALS_WPF_App
             }
             catch (Exception ex)
             {
-                //MainWindow.ShowMessage(ex.Message);
+                DialogWindow.ShowMessage(ex.Message);
             }
 
             this.Dispatcher.Invoke(() =>
@@ -172,7 +172,7 @@ namespace VisuALS_WPF_App
             settings.WindowlessRenderingEnabled = true;
 
             //settings.CachePath = DataManager.GetDirPath("settings/apps/web_browser/cache");
-            if (!(bool)Cef.IsInitialized)
+            if (Cef.IsInitialized != true)
             {
                 Cef.Initialize(settings);
             }
