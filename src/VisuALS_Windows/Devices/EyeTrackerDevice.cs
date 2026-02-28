@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
 
-namespace VisuALS_WPF_App.Devices
+namespace VisuALS_WPF_App
 {
     public abstract class EyeTrackerDevice: ConfigurableDevice
     {

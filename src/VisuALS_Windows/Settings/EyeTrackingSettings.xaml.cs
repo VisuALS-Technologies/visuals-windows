@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -16,8 +18,12 @@ namespace VisuALS_WPF_App
 
             //Set eye tracker devices list
 
-            EyeTrackerCombo.SetItems(GazeTrackerManager.NamesAndGazeTrackersDictionary());
-            EyeTrackerCombo.AddItem("None", "None");
+            EyeTrackerCombo.SetItems(DeviceManager.ListEyeTrackingDevices().ToDictionary((x) => x.Name, (x) => (object)x));
+            EyeTrackerCombo.AddItem("None", "none");
+            if (DeviceManager.GetPreferredEyeTrackerDevice() != null)
+                EyeTrackerCombo.SelectedItem = DeviceManager.GetPreferredEyeTrackerDevice();
+            else
+                EyeTrackerCombo.SelectedItemName = "None";
 
             //Initialize control values
             DwellTimeNumberPicker.Value = (int)Application.Current.Resources["DwellTime"] / 1000.0;
@@ -61,11 +67,14 @@ namespace VisuALS_WPF_App
         {
             if (EyeTrackerCombo.SelectedItemName == "None")
             {
-                GazeTrackerManager.SelectedGazeTracker = null;
+                EyeTrackerManager.SelectedEyeTracker = null;
+                App.globalConfig.Set("preferred_eye_tracker_device_id", "none");
             }
             else
             {
-                GazeTrackerManager.SelectedGazeTracker = (IGazeTracker)EyeTrackerCombo.SelectedItem;
+                EyeTrackerDevice _selected_dev = (EyeTrackerDevice)EyeTrackerCombo.SelectedItem;
+                EyeTrackerManager.SelectedEyeTracker = _selected_dev;
+                App.globalConfig.Set("preferred_eye_tracker_device_id", _selected_dev.DeviceID);
             }
         }
     }

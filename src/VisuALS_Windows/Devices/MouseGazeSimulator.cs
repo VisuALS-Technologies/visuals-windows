@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows;
-using VisuALS_WPF_App.Devices;
 
 namespace VisuALS_WPF_App
 {

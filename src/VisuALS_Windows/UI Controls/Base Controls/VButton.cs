@@ -229,7 +229,7 @@ namespace VisuALS_WPF_App
         /// </summary>
         public VButton() : base()
         {
-            GazeTrackerManager.GazePointReceived += GazePointReceivedHandler;
+            EyeTrackerManager.GazePointReceived += GazePointReceivedHandler;
             this.GazeEnter += VButton_GazeEnter;
             this.GazeLeave += VButton_GazeLeave;
             DwellTimer.Tick += (x, y) => DwellDelayComplete();

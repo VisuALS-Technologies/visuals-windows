@@ -5,7 +5,6 @@ using System.Linq;
 using System.Management;
 using System.Text;
 using System.Threading.Tasks;
-using VisuALS_WPF_App.Devices;
 
 namespace VisuALS_WPF_App
 {
@@ -120,6 +119,17 @@ namespace VisuALS_WPF_App
         public static List<EyeTrackerDevice> ListEyeTrackingDevices()
         {
             return eyeTrackingDevices;
+        }
+        public static EyeTrackerDevice GetPreferredEyeTrackerDevice()
+        {
+            string device_id = App.globalConfig.Get<string>("preferred_eye_tracker_device_id");
+            if (device_id == "none")
+                return null;
+            var device = eyeTrackingDevices.FirstOrDefault(dev => dev.DeviceID == device_id);
+            if (device != null)
+                return device;
+            else
+                return eyeTrackingDevices.FirstOrDefault();
         }
         public static AudioOutputDevice GetPreferredAudioOutputDevice(AudioOutputRole role)
         {

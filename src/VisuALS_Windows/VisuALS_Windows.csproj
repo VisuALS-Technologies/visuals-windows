@@ -278,9 +278,7 @@
     <Compile Include="Devices\EyeTrackerDevice.cs" />
     <Compile Include="Devices\MouseGazeSimulator.cs" />
     <Compile Include="DialogWindow.cs" />
-    <Compile Include="Gaze Tracking\IGazeTracker.cs" />
-    <Compile Include="Gaze Tracking\GazeTrackerManager.cs" />
-    <Compile Include="Gaze Tracking\MouseGazeSim.cs" />
+    <Compile Include="Eye Tracking\EyeTrackerManager.cs" />
     <Compile Include="Keyboards\Keyboard Bars\VBasicKeyBar.xaml.cs">
       <DependentUpon>VBasicKeyBar.xaml</DependentUpon>
     </Compile>
@@ -358,7 +356,7 @@
     <Compile Include="Settings\DisplaySettings.xaml.cs">
       <DependentUpon>DisplaySettings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Gaze Tracking\EyeBall.cs" />
+    <Compile Include="Eye Tracking\EyeBall.cs" />
     <Compile Include="Alarm.xaml.cs">
       <DependentUpon>Alarm.xaml</DependentUpon>
     </Compile>

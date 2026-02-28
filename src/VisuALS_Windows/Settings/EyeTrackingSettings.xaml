@@ -82,6 +82,7 @@
                     Grid.Row="4"
                     Grid.RowSpan="3"
                     Grid.ColumnSpan="3"
+                    Content="{DynamicResource est_customization}"
                     Click="EyeBallCustomization_Click"/>
 
         <local:VToggle x:Name="DwellIndicatorToggle"

@@ -94,14 +94,14 @@ namespace VisuALS_WPF_App
         public static void Enable()
         {
             ball.Visibility = Visibility.Visible;
-            GazeTrackerManager.GazePointReceived += GazePointReceivedHandler;
+            EyeTrackerManager.GazePointReceived += GazePointReceivedHandler;
             isEnabled = true;
         }
 
         public static void Disable()
         {
             ball.Visibility = Visibility.Hidden;
-            GazeTrackerManager.GazePointReceived -= GazePointReceivedHandler;
+            EyeTrackerManager.GazePointReceived -= GazePointReceivedHandler;
             isEnabled = false;
         }
 
