@@ -11,7 +11,7 @@
         public PhotoViewer() : base("ap_photo_viewer", "ap_desc_photo_viewer")
         {
             IconSource = "Resources/Images/photo.png";
-            Role = ButtonRole.Display;
+            Role = ButtonRole.Multimedia;
         }
 
         /// <summary>

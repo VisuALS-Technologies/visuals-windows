@@ -10,7 +10,7 @@ namespace VisuALS_WPF_App
         public Camera() : base("ap_camera", "ap_desc_camera")
         {
             IconSource = "Resources/Images/camera.png";
-            Role = ButtonRole.Notes;
+            Role = ButtonRole.Multimedia;
         }
 
         /// <summary>

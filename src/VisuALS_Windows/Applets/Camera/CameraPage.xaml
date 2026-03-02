@@ -4,11 +4,9 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:VisuALS_WPF_App"
-      xmlns:xamlhost="clr-namespace:Microsoft.Toolkit.Wpf.UI.XamlHost;assembly=Microsoft.Toolkit.Wpf.UI.XamlHost"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
-      Title="Camera" Background="Black"
-      Loaded="Page_Loaded">
+      Title="Camera" Background="Black">
     <local:VGrid Role="MainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"></ColumnDefinition>
@@ -17,16 +15,21 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
-        <xamlhost:WindowsXamlHost x:Name="cameraPreviewHost"
-            Grid.RowSpan="3"
-            Grid.ColumnSpan="1"/>
+        <local:VCameraPreview x:Name="CameraPreview"
+                              Grid.RowSpan="2"/>
+        <local:VButton x:Name="SwapCameraBtn"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       Role="Toggle"
+                       Content="{DynamicResource cm_swap_camera}"
+                       Click="SwapCameraBtn_Click"/>
         <local:VButton x:Name="CaptureBtn"
             Grid.Row="1"
             Grid.Column="1"
-            Content="Capture"
+            Content="{DynamicResource cm_capture}"
             Role="Save"
             Click="CaptureBtn_Click"/>
+        
     </local:VGrid>
 </local:AppletPage>

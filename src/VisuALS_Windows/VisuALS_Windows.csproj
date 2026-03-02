@@ -194,6 +194,7 @@
     <Compile Include="Applets\AppletMenu.xaml.cs">
       <DependentUpon>AppletMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Devices\MediaCaptureDevice.cs" />
     <Compile Include="Devices\AudioInputDevice.cs" />
     <Compile Include="Devices\AudioOutputDevice.cs" />
     <Compile Include="Devices\ConfigurableDevice.cs" />
@@ -234,6 +235,9 @@
     </Compile>
     <Compile Include="UI Controls\VCollapseBox.xaml.cs">
       <DependentUpon>VCollapseBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI Controls\VCameraPreview.xaml.cs">
+      <DependentUpon>VCameraPreview.xaml</DependentUpon>
     </Compile>
     <Compile Include="Update Management\OverhaulFileMigration.cs" />
     <Compile Include="Settings\LanguageSettings.xaml.cs">
@@ -618,6 +622,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UI Controls\VCameraPreview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI Controls\VScrollBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -673,6 +681,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <Content Include="Resources\Images\camera.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Images\photo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

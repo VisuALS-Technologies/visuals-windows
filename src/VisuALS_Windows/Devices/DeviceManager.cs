@@ -5,6 +5,8 @@ using System.Linq;
 using System.Management;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Devices.Enumeration;
+using Windows.Media.Devices;
 
 namespace VisuALS_WPF_App
 {
@@ -77,12 +79,15 @@ namespace VisuALS_WPF_App
         };
         static DeviceManager()
         {
-            App.globalConfig.Initialize<string>("preferred_media_audio_output_device_id", enumerator.GetDefaultAudioEndpoint(DataFlow.Render, NAudio.CoreAudioApi.Role.Multimedia).ID);
-            App.globalConfig.Initialize<string>("preferred_notifications_audio_output_device_id", enumerator.GetDefaultAudioEndpoint(DataFlow.Render, NAudio.CoreAudioApi.Role.Console).ID);
-            App.globalConfig.Initialize<string>("preferred_alarm_audio_output_device_id", enumerator.GetDefaultAudioEndpoint(DataFlow.Render, NAudio.CoreAudioApi.Role.Communications).ID);
-            App.globalConfig.Initialize<string>("preferred_speech_audio_output_device_id", enumerator.GetDefaultAudioEndpoint(DataFlow.Render, NAudio.CoreAudioApi.Role.Communications).ID);
-            App.globalConfig.Initialize<string>("preferred_audio_input_device_id", enumerator.GetDefaultAudioEndpoint(DataFlow.Capture, Role.Console).ID);
-            App.globalConfig.Initialize<string>("preferred_eye_tracker_device_id", eyeTrackingDevices[0].DeviceID);
+            App.globalConfig.Initialize("preferred_media_audio_output_device_id", enumerator.GetDefaultAudioEndpoint(DataFlow.Render, NAudio.CoreAudioApi.Role.Multimedia).ID);
+            App.globalConfig.Initialize("preferred_notifications_audio_output_device_id", enumerator.GetDefaultAudioEndpoint(DataFlow.Render, NAudio.CoreAudioApi.Role.Console).ID);
+            App.globalConfig.Initialize("preferred_alarm_audio_output_device_id", enumerator.GetDefaultAudioEndpoint(DataFlow.Render, NAudio.CoreAudioApi.Role.Communications).ID);
+            App.globalConfig.Initialize("preferred_speech_audio_output_device_id", enumerator.GetDefaultAudioEndpoint(DataFlow.Render, NAudio.CoreAudioApi.Role.Communications).ID);
+            App.globalConfig.Initialize("preferred_audio_input_device_id", enumerator.GetDefaultAudioEndpoint(DataFlow.Capture, Role.Console).ID);
+            App.globalConfig.Initialize("preferred_eye_tracker_device_id", eyeTrackingDevices[0].DeviceID);
+            DeviceInformation mediaCaptureDevInfo = DeviceInformation.FindAllAsync(DeviceClass.VideoCapture).AsTask().GetAwaiter().GetResult().FirstOrDefault();
+            string mediaCaptureDeviceID = mediaCaptureDevInfo != null ? mediaCaptureDevInfo.Id : "none";
+            App.globalConfig.Initialize("preferred_media_capture_device_id", mediaCaptureDeviceID);
         }
         public static List<Device> ListAllDevices()
         {
@@ -119,6 +124,10 @@ namespace VisuALS_WPF_App
         public static List<EyeTrackerDevice> ListEyeTrackingDevices()
         {
             return eyeTrackingDevices;
+        }
+        public static List<MediaCaptureDevice> ListMediaCaptureDevices()
+        {
+            return DeviceInformation.FindAllAsync(DeviceClass.VideoCapture).AsTask().GetAwaiter().GetResult().Select((x) => new MediaCaptureDevice(x)).ToList();
         }
         public static EyeTrackerDevice GetPreferredEyeTrackerDevice()
         {
@@ -164,6 +173,16 @@ namespace VisuALS_WPF_App
             else
                 return ListAudioInputDevices().FirstOrDefault();
         }
-        
+        public static MediaCaptureDevice GetPreferredMediaCaptureDevice()
+        {
+            string device_id = App.globalConfig.Get<string>("preferred_media_capture_device_id");
+            if (device_id == "none")
+                return null;
+            var device_info = DeviceInformation.CreateFromIdAsync(device_id).AsTask().GetAwaiter().GetResult();
+            if (device_info != null & device_info.IsEnabled)
+                return new MediaCaptureDevice(device_info);
+            else
+                return ListMediaCaptureDevices().FirstOrDefault();
+        }
     }
 }

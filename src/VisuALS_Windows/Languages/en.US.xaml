@@ -21,6 +21,7 @@
     <system:String x:Key="ap_calculator">Calculator</system:String>
     <system:String x:Key="ap_photo_viewer">Photos</system:String>
     <system:String x:Key="ap_dev_manager">Device Manager</system:String>
+    <system:String x:Key="ap_camera">Camera</system:String>
 
     <!-- Applet Descriptions -->
     <system:String x:Key="ap_desc_text_to_speech"> Reads typed messages out loud using text-to-speech software.
@@ -35,11 +36,12 @@
                                                grid for interaction and one which depends on using the Windows Eye 
                                                Control bar. You can switch between these two from Display Settings.</system:String>
     <system:String x:Key="ap_desc_recorder"> For recording audio clips. You can use this to record phrases for later playback.</system:String>
-    <system:String x:Key="ap_desc_dev_tools">An application with some special functions that most users won't need, 
+    <system:String x:Key="ap_desc_dev_tools">An applet with some special functions that most users won't need, 
                                               such as resetting text prediction data and checking for missing translations.</system:String>
     <system:String x:Key="ap_desc_file_browser">For browsing files on the system, including moving, copying, deleting, and viewing files.</system:String>
-    <system:String x:Key="ap_desc_calculator">A basic calculator application.</system:String>
+    <system:String x:Key="ap_desc_calculator">A basic calculator applet.</system:String>
     <system:String x:Key="ap_desc_photo_viewer">A simple applet for viewing photos.</system:String>
+    <system:String x:Key="ap_desc_camera">A simple applet for taking photos.</system:String>
 
     <system:String x:Key="ap_select_for_details">Select an applet to view details and enable/disable it.</system:String>
     <system:String x:Key="ap_enable">Enable Applet</system:String>
@@ -120,7 +122,7 @@
     
     <system:String x:Key="ar_settings_title">Recorder Settings</system:String>
     <system:String x:Key="ar_recordings_folder" xml:space="preserve">Recordings Folder:   </system:String>
-    
+
     <!-- Framework Elements -->
     <!-- Color Picker -->
     <system:String x:Key="vf_selected_color">Selected Color</system:String>
@@ -322,6 +324,13 @@
     <!-- Photo Viewer -->
     <system:String x:Key="pv_settings_title">Photo Viewer Settings</system:String>
     <system:String x:Key="pv_photos_folder">Photos Folder</system:String>
+
+    <!-- Camera -->
+    <system:String x:Key="cm_capture">Capture</system:String>
+    <system:String x:Key="cm_swap_camera">Swap Camera</system:String>
+    
+    <!-- Camera Preview -->
+    <system:String x:Key="cm_no_camera">No Camera Found</system:String>
 
     <!-- Old VisuALS File Migration -->
     <system:String x:Key="fm_settings_file_error">An error has occurred while attempting to clean up settings files.</system:String>
