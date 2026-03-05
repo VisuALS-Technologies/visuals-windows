@@ -24,7 +24,7 @@ namespace VisuALS_WPF_App
 
         public override AppletPage CreateSettingsPage()
         {
-            return new NotepadSettings();
+            return new CameraSettings();
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace VisuALS_WPF_App
         /// </summary>
         public override void InitializeSettingsValues()
         {
-
+            Config.Initialize("photos_folder", Path.Combine(AppPaths.PicturesPath, "Camera Roll"));
         }
     }
 }

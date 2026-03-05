@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImapX;
+using System;
 using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -34,22 +35,27 @@ namespace VisuALS_WPF_App
                 VideoDeviceId = DeviceID
             };
             mediaCapture = new MediaCapture();
-            mediaCapture.InitializeAsync(settings).AsTask().GetAwaiter().GetResult();
+            mediaCapture.InitializeAsync(settings).AsTask().Wait();
         }
 
-        public async void CapturePhoto(string filepath = null)
+        public async void CapturePhoto(string path = null)
         {
             StorageFile file;
 
-            if (filepath == null)
+            if (path == null)
             {
                 StorageFolder cameraRoll = await StorageFolder.GetFolderFromPathAsync(Path.Combine(AppPaths.PicturesPath, "Camera Roll"));
                 file = await cameraRoll.CreateFileAsync($"{DateTime.Now:yyyyMMddTHHmmss}.jpg", CreationCollisionOption.GenerateUniqueName);
             }
+            else if (Directory.Exists(path))
+            {
+                StorageFolder folder = await StorageFolder.GetFolderFromPathAsync(path);
+                file = await folder.CreateFileAsync($"{DateTime.Now:yyyyMMddTHHmmss}.jpg", CreationCollisionOption.GenerateUniqueName);
+            }
             else
             {
-                StorageFolder folder = await StorageFolder.GetFolderFromPathAsync(Path.GetDirectoryName(filepath));
-                file = await folder.CreateFileAsync(Path.GetFileName(filepath), CreationCollisionOption.FailIfExists);
+                StorageFolder folder = await StorageFolder.GetFolderFromPathAsync(Path.GetDirectoryName(path));
+                file = await folder.CreateFileAsync(Path.GetFileName(path), CreationCollisionOption.FailIfExists);
             }
 
             await mediaCapture.CapturePhotoToStorageFileAsync(Windows.Media.MediaProperties.ImageEncodingProperties.CreateJpeg(), file);

@@ -143,6 +143,9 @@
     <Compile Include="Applets\Camera\CameraPage.xaml.cs">
       <DependentUpon>CameraPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Applets\Camera\CameraSettings.xaml.cs">
+      <DependentUpon>CameraSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Applets\PhotoViewer\PhotoViewerSettings.xaml.cs">
       <DependentUpon>PhotoViewerSettings.xaml</DependentUpon>
     </Compile>
@@ -378,6 +381,10 @@
       <DependentUpon>VWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Applets\Camera\CameraPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Applets\Camera\CameraSettings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

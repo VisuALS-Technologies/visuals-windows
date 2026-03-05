@@ -33,7 +33,7 @@ namespace VisuALS_WPF_App
 
         private async void CaptureBtn_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            CameraPreview.Source.CapturePhoto();
+            CameraPreview.Source.CapturePhoto(Config.Get<string>("photos_folder"));
             CameraPreview.Visibility = Visibility.Collapsed;
             await Task.Delay(250);
             CameraPreview.Visibility = Visibility.Visible;

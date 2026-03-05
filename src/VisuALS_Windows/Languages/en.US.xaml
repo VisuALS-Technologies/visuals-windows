@@ -328,6 +328,8 @@
     <!-- Camera -->
     <system:String x:Key="cm_capture">Capture</system:String>
     <system:String x:Key="cm_swap_camera">Swap Camera</system:String>
+    <system:String x:Key="cm_settings_title">Camera Settings</system:String>
+    <system:String x:Key="cm_photos_folder" xml:space="preserve">Photos Folder: </system:String>
     
     <!-- Camera Preview -->
     <system:String x:Key="cm_no_camera">No Camera Found</system:String>
