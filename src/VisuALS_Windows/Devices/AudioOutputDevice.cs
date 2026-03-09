@@ -20,7 +20,6 @@ namespace VisuALS_WPF_App
         public bool isPlaying { get; private set; }
         public bool isPaused { get; private set; }
         private SpeechAudioFormatInfo speechAudioFormatInfo;
-        string speakTempFile = AppPaths.AudioPath + "\\~speech_output.wav";
         public event EventHandler<StoppedEventArgs> PlaybackStopped;
         public AudioOutputDevice(MMDevice device) : base(device.ID)
         {
@@ -61,21 +60,33 @@ namespace VisuALS_WPF_App
         //    }
         //}
 
-        public void Speak(string text)
+        public async Task Speak(string text)
         {
             isPlaying = true;
             isPaused = false;
             
             using (var synth = new System.Speech.Synthesis.SpeechSynthesizer())
             {
+                MemoryStream stream = new MemoryStream();
                 synth.SelectVoice(App.globalConfig.Get<string>("tts_voice"));
-                synth.SetOutputToWaveFile(speakTempFile);
+                synth.SetOutputToWaveStream(stream);
                 synth.Speak(text);
+                stream.Flush();
+                stream.Seek(0, SeekOrigin.Begin);
+                isPlaying = true;
+                isPaused = false;
+                reader = new WaveFileReader(stream);
+                WaveChannel32 waveChannel = new WaveChannel32(reader) { PadWithZeroes = false };
+                output = new WasapiOut(device, AudioClientShareMode.Shared, false, 100);
+                output.PlaybackStopped += Instance_PlaybackStopped;
+                output.PlaybackStopped += PlaybackStopped;
+                output.Init(waveChannel);
+                output.Play();
+                await Task.Delay(100);
             }
-            Play(speakTempFile);
         }
 
-        private void Instance_SpeakCompleted(object sender, NAudio.Wave.StoppedEventArgs e)
+        private void Instance_PlaybackStopped(object sender, NAudio.Wave.StoppedEventArgs e)
         {
             output.Dispose();
             reader.Dispose();
@@ -88,7 +99,7 @@ namespace VisuALS_WPF_App
             reader = new WaveFileReader(filepath);
             WaveChannel32 waveChannel = new WaveChannel32(reader) { PadWithZeroes = false };
             output = new WasapiOut(device, AudioClientShareMode.Shared, false, 100);
-            output.PlaybackStopped += Instance_SpeakCompleted;
+            output.PlaybackStopped += Instance_PlaybackStopped;
             output.PlaybackStopped += PlaybackStopped;
             output.Init(waveChannel);
             output.Play();
