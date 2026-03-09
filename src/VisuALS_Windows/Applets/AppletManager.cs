@@ -53,7 +53,7 @@ namespace VisuALS_WPF_App
 
         static AppletManager()
         {
-            SettingsManager.InitializeValue("global\\config", "active_applets", new string[] { "ap_web_browser", "ap_notepad", "ap_text_to_speech", "ap_photo_viewer", "ap_recorder" });
+            SettingsManager.InitializeValue("global\\config", "active_applets", new string[] { "ap_web_browser", "ap_notepad", "ap_text_to_speech", "ap_camera", "ap_photo_viewer", "ap_recorder" });
             string[] applet_names = SettingsManager.Get<string[]>("global\\config", "active_applets");
             
             ActiveApplets = applet_names.Where(x => AppletNames.Contains(x)).Select(x => GetApplet(x)).ToList();
