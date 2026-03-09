@@ -211,6 +211,10 @@
     <system:String x:Key="st_exit_prompt">Are you sure you want to exit the VisuALS application?</system:String>
     <system:String x:Key="st_debug">in debug/not installed</system:String>
     <system:String x:Key="st_manage_applets">Manage Applets</system:String>
+    <system:String x:Key="st_view_credits">View Credits</system:String>
+    <system:String x:Key="st_credits">
+        Camera Shutter Open.wav by theplax -- https://freesound.org/s/624913/ -- License: Attribution 4.0
+    </system:String>
 
     <!-- Audio Settings -->
     <system:String x:Key="ast_title">Audio Settings</system:String>

@@ -40,6 +40,7 @@ namespace VisuALS_WPF_App
         private async void CaptureBtn_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             CameraPreview.Visibility = Visibility.Collapsed;
+            DeviceManager.GetPreferredAudioOutputDevice(AudioOutputRole.Media).Play(".\\Resources\\624913__theplax__camera-shutter-open.wav");
             await Task.Delay(50);
             CameraPreview.Source.CapturePhoto(Config.Get<string>("photos_folder"));
             await Task.Delay(200);

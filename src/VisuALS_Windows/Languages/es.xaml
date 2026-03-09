@@ -203,6 +203,10 @@
     <system:String x:Key="st_exit_prompt">¿Estás seguro de que quieres salir VisuALS?</system:String>
     <system:String x:Key="st_debug">en modo de depuación/no instalado</system:String>
     <system:String x:Key="st_manage_applets" xml:space="preserve">Administrar subprogramas</system:String>
+    <system:String x:Key="st_view_credits">Ver créditos</system:String>
+    <system:String x:Key="st_credits">
+        Camera Shutter Open.wav de theplax -- https://freesound.org/s/624913/ -- Licencia: Attribution 4.0
+    </system:String>
 
     <!-- Audio Settings -->
     <system:String x:Key="ast_title">Ajustos del Audio</system:String>
