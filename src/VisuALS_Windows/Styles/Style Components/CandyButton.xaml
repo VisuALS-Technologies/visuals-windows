@@ -68,6 +68,9 @@
             <Trigger Property="Role" Value="Display">
                 <Setter Property="Background" Value="{StaticResource BubbleBlue}"/>
             </Trigger>
+            <Trigger Property="Role" Value="Multimedia">
+                <Setter Property="Background" Value="{StaticResource BubbleBlue}"/>
+            </Trigger>
 
             <Trigger Property="Role" Value="Help">
                 <Setter Property="Background" Value="{StaticResource PinkLemonade}"/>

@@ -108,5 +108,13 @@
             Click="ManageApplets_Click"
             Content="{DynamicResource st_manage_applets}"/>
 
+        <local:VButton Role="Settings"
+            Grid.Column="10"
+            Grid.Row="10"
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="3"
+            Click="ViewCredits_Click"
+            Content="{DynamicResource st_view_credits}"/>
+
     </local:VGrid>
 </Page>

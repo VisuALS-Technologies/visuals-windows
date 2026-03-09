@@ -32,7 +32,8 @@ namespace VisuALS_WPF_App
         Toggle,
         Help,
         Phantom,
-        Settings, Edit, Cancel, Item, Pause, Home, Alarm, Key
+        Settings, Edit, Cancel, Item, Pause, Home, Alarm, Key,
+        Multimedia
     }
 
     /// <summary>

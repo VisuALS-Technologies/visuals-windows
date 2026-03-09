@@ -67,5 +67,16 @@ namespace VisuALS_WPF_App
         {
             NavigationService.Navigate(new ManageApplets());
         }
+
+        private void ViewCredits_Click(object sender, RoutedEventArgs e)
+        {
+            VScrollBox creditsScroll = new VScrollBox();
+            creditsScroll.Content = new VTextBlock()
+            {
+                Text = LanguageManager.Tokens["st_credits"],
+                TextWrapping = TextWrapping.Wrap
+            };
+            DialogWindow.Show(creditsScroll);
+        }
     }
 }

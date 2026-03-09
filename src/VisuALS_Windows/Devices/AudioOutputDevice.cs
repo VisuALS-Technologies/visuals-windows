@@ -5,6 +5,7 @@ using NAudio.Wave;
 using System;
 using System.IO;
 using System.Speech.AudioFormat;
+using System.Speech.Synthesis;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;

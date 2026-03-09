@@ -21,22 +21,24 @@
     <system:String x:Key="ap_file_browser">Explorador de archivos</system:String>
     <system:String x:Key="ap_calculator">Calculadora</system:String>
     <system:String x:Key="ap_photo_viewer">Fotos</system:String>
+    <system:String x:Key="ap_camera">Cámara</system:String>
 
     <!-- App Descriptions -->
-    <system:String x:Key="ap_desc_dev_tools" xml:space="preserve">Una aplicación con algunas funciones especiales que la mayoría de los usuarios no necesitarán, como restablecer los datos de predicción de texto y buscar traducciones faltantes.</system:String>
-    <system:String x:Key="ap_desc_notepad" xml:space="preserve">Para escribir y leer documentos de texto simples. Este subprograma NO PUEDE mostrar ni editar documentos de Word (.doc/.docx), PDF, etc. Solo puede editar documentos de texto sin formato (.txt)</system:String>
-    <system:String x:Key="ap_desc_recorder" xml:space="preserve">Para grabar clips de audio. Puedes usar esto para grabar frases y escucharlas después. </system:String>
-    <system:String x:Key="ap_desc_text_to_speech" xml:space="preserve">Lee mensajes escritos en voz alta usando un software de texto a voz. Las frases se pueden almacenar en varias categorías para facilitar el acceso, y las grabaciones del subprograma Audio Recorder también se pueden reproducir desde aquí.</system:String>
-    <system:String x:Key="ap_desc_web_browser" xml:space="preserve">Para ver páginas web. Puedes poner un marcador de páginas para facilitar el acceso más tarde. Hay dos versiones del navegador web, una que utiliza una cuadrícula de botones para la interacción y otra que depende del uso de la barra de “Windows Eye Control”. Puede cambiar entre estos dos desde la pantalla de Configuración.</system:String>
-    <system:String x:Key="ap_desc_file_browser">For browsing files on the system, including moving, copying, deleting, and viewing files.</system:String>
-    <system:String x:Key="ap_desc_calculator">A basic calculator application.</system:String>
-    <system:String x:Key="ap_desc_photo_viewer">A simple applet for viewing photos.</system:String>
+    <system:String x:Key="ap_desc_dev_tools">Una subprograma con algunas funciones especiales que la mayoría de los usuarios no necesitarán, como restablecer los datos de predicción de texto y buscar traducciones faltantes.</system:String>
+    <system:String x:Key="ap_desc_notepad">Para escribir y leer documentos de texto simples. Este subprograma NO PUEDE mostrar ni editar documentos de Word (.doc/.docx), PDF, etc. Solo puede editar documentos de texto sin formato (.txt)</system:String>
+    <system:String x:Key="ap_desc_recorder">Para grabar clips de audio. Puedes usar esto para grabar frases y escucharlas después. </system:String>
+    <system:String x:Key="ap_desc_text_to_speech">Lee mensajes escritos en voz alta usando un software de texto a voz. Las frases se pueden almacenar en varias categorías para facilitar el acceso, y las grabaciones del subprograma Audio Recorder también se pueden reproducir desde aquí.</system:String>
+    <system:String x:Key="ap_desc_web_browser">Para ver páginas web. Puedes poner un marcador de páginas para facilitar el acceso más tarde. Hay dos versiones del navegador web, una que utiliza una cuadrícula de botones para la interacción y otra que depende del uso de la barra de “Windows Eye Control”. Puede cambiar entre estos dos desde la pantalla de Configuración.</system:String>
+    <system:String x:Key="ap_desc_file_browser">Para explorar archivos en el sistema, incluido mover, copiar, eliminar y visualizar archivos.</system:String>
+    <system:String x:Key="ap_desc_calculator">Una subprograma de calculadora básica.</system:String>
+    <system:String x:Key="ap_desc_photo_viewer">Una subprograma sencilla para ver fotografías.</system:String>
+    <system:String x:Key="ap_desc_camera">Una subprograma sencilla para tomar fotografías.</system:String>
 
-    <system:String x:Key="ap_disable" xml:space="preserve">Deshabilitar subprograma</system:String>
-    <system:String x:Key="ap_disabled" xml:space="preserve">Desactivado</system:String>
-    <system:String x:Key="ap_enable" xml:space="preserve">Habilitar subprograma</system:String>
-    <system:String x:Key="ap_enabled" xml:space="preserve">Activado</system:String>
-    <system:String x:Key="ap_select_for_details" xml:space="preserve">Seleccione un subprograma para ver los detalles y habilitarlo/deshabilitarlo.</system:String>
+    <system:String x:Key="ap_disable">Deshabilitar subprograma</system:String>
+    <system:String x:Key="ap_disabled">Desactivado</system:String>
+    <system:String x:Key="ap_enable">Habilitar subprograma</system:String>
+    <system:String x:Key="ap_enabled">Activado</system:String>
+    <system:String x:Key="ap_select_for_details">Seleccione un subprograma para ver los detalles y habilitarlo/deshabilitarlo.</system:String>
 
     <!-- Browsers -->
     <system:String x:Key="br_classic">Clásico</system:String>
@@ -45,15 +47,15 @@
     <!-- Themes -->
     <system:String x:Key="th_gumdrop">Goma de Mascar</system:String>
     <system:String x:Key="th_licorice">Regaliz</system:String>
-    <system:String x:Key="th_coastline" xml:space="preserve">Línea costera</system:String>
+    <system:String x:Key="th_coastline">Línea costera</system:String>
 
     <!-- Keyboard Layouts -->
     <system:String x:Key="kl_en_classic_qwerty">Qwerty Clásico para Inglés</system:String>
     <system:String x:Key="kl_es_classic_qwerty">Qwerty Clásico para Español</system:String>
 
     <!-- Dwell Indicators -->
-    <system:String x:Key="di_none" xml:space="preserve">Ninguno</system:String>
-    <system:String x:Key="di_pie" xml:space="preserve">Circular</system:String>
+    <system:String x:Key="di_none">Ninguno</system:String>
+    <system:String x:Key="di_pie">Circular</system:String>
 
     <!-- General -->
     <system:String x:Key="yes">Sí</system:String>
@@ -70,10 +72,10 @@
     <system:String x:Key="pb_stop">Para</system:String>
     <system:String x:Key="pb_pause">Pausa</system:String>
     <system:String x:Key="pb_resume">Continua</system:String>
-    <system:String x:Key="pb_fast_forward" xml:space="preserve">Avance rápido</system:String>
-    <system:String x:Key="pb_no_preview" xml:space="preserve">No hay vista previa disponible</system:String>
-    <system:String x:Key="pb_replay" xml:space="preserve">Repetir</system:String>
-    <system:String x:Key="pb_rewind" xml:space="preserve">Retroceder</system:String>
+    <system:String x:Key="pb_fast_forward">Avance rápido</system:String>
+    <system:String x:Key="pb_no_preview">No hay vista previa disponible</system:String>
+    <system:String x:Key="pb_replay">Repetir</system:String>
+    <system:String x:Key="pb_rewind">Retroceder</system:String>
 
     <!-- Navigation Bar -->
     <system:String x:Key="nv_home">Casa</system:String>
@@ -201,6 +203,10 @@
     <system:String x:Key="st_exit_prompt">¿Estás seguro de que quieres salir VisuALS?</system:String>
     <system:String x:Key="st_debug">en modo de depuación/no instalado</system:String>
     <system:String x:Key="st_manage_applets" xml:space="preserve">Administrar subprogramas</system:String>
+    <system:String x:Key="st_view_credits">Ver créditos</system:String>
+    <system:String x:Key="st_credits">
+        Camera Shutter Open.wav de theplax -- https://freesound.org/s/624913/ -- Licencia: Attribution 4.0
+    </system:String>
 
     <!-- Audio Settings -->
     <system:String x:Key="ast_title">Ajustos del Audio</system:String>
@@ -312,6 +318,15 @@
     <!-- Photo Viewer -->
     <system:String x:Key="pv_settings_title">Configuración del visor de fotos</system:String>
     <system:String x:Key="pv_photos_folder">Carpeta de fotos</system:String>
+
+    <!-- Camera -->
+    <system:String x:Key="cm_capture">Capturar</system:String>
+    <system:String x:Key="cm_swap_camera">Cambiar cámara</system:String>
+    <system:String x:Key="cm_settings_title">Configuración de la Cámara</system:String>
+    <system:String x:Key="cm_photos_folder" xml:space="preserve">Carpeta de Fotos: </system:String>
+
+    <!-- Camera Preview -->
+    <system:String x:Key="cm_no_camera">No se Encontró Ninguna Cámara</system:String>
 
     <!-- Old VisuALS File Migration -->
     <system:String x:Key="fm_cleanup_file_error" xml:space="preserve">Se produjo un error al intentar eliminar archivos antiguos.</system:String>

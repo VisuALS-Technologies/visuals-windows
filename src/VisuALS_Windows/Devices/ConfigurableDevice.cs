@@ -14,7 +14,7 @@ namespace VisuALS_WPF_App
         public ConfigurableDevice(string id)
         {
             DeviceID = id;
-            Config = new SettingsFile(AppPaths.SettingsPath + "\\devices\\" + DeviceID + "\\config");
+            Config = new SettingsFile(AppPaths.SettingsPath + "\\devices\\" + DeviceID.Replace("?", "").Replace("\\", "") + "\\config");
         }
     }
 }
