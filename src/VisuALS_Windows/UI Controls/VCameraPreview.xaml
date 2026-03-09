@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Loaded="UserControl_Loaded">
-    <local:VGrid Role="ControlGrid">
+    <local:VGrid Role="ControlGrid" Background="Transparent">
         <local:VLabel x:Name="NoCameraLbl"
                       Role="Message"
                       HorizontalAlignment="Center"

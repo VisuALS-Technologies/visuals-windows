@@ -14,6 +14,12 @@ namespace VisuALS_WPF_App
 {
     public class MediaCaptureDevice : ConfigurableDevice
     {
+        public enum FlashMode
+        {
+            Auto,
+            On,
+            Off
+        }
         public bool isRecording { get; private set; }
         public MediaCapture mediaCapture;
         public DeviceInformation deviceInfo;
@@ -36,6 +42,19 @@ namespace VisuALS_WPF_App
             };
             mediaCapture = new MediaCapture();
             mediaCapture.InitializeAsync(settings).AsTask().Wait();
+
+            if (FlashSupported())
+                Config.Initialize("flash_mode", FlashMode.Auto.ToString());
+            else
+                Config.Initialize("flash_mode", FlashMode.Off.ToString());
+            if (mediaCapture.VideoDeviceController.FlashControl.Supported)
+            {
+                FlashMode saved_mode = FlashMode.Auto;
+                if (Enum.TryParse(Config.Get<string>("flash_mode"), out saved_mode))
+                {
+                    SetFlash(saved_mode);
+                }
+            }
         }
 
         public async void CapturePhoto(string path = null)
@@ -64,6 +83,39 @@ namespace VisuALS_WPF_App
         public async void StartPreview()
         {
             await mediaCapture.StartPreviewAsync();
+        }
+
+        public void SetFlash(FlashMode mode, bool save_setting = false)
+        {
+            if (mediaCapture.VideoDeviceController.FlashControl.Supported)
+            {
+                if (mode == FlashMode.On)
+                    mediaCapture.VideoDeviceController.FlashControl.Enabled = true;
+                else if (mode == FlashMode.Off)
+                    mediaCapture.VideoDeviceController.FlashControl.Enabled = false;
+                else if (mode == FlashMode.Auto)
+                    mediaCapture.VideoDeviceController.FlashControl.Auto = true;
+            }
+
+            if (save_setting)
+            {
+                Config.Set("flash_mode", mode.ToString());
+            }
+        }
+
+        public FlashMode GetFlash()
+        {
+            FlashMode saved_mode = FlashMode.Auto;
+            if (Enum.TryParse(Config.Get<string>("flash_mode"), out saved_mode))
+            {
+                SetFlash(saved_mode);
+            }
+            return saved_mode;
+        }
+
+        public bool FlashSupported()
+        {
+            return mediaCapture.VideoDeviceController.FlashControl.Supported;
         }
     }
 }

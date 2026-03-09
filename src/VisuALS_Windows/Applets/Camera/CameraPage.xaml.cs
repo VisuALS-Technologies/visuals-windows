@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NAudio.CoreAudioApi;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -31,11 +32,17 @@ namespace VisuALS_WPF_App
             cameraSearchProcess = new PeriodicBackgroundProcess(cameraSearchProcess_Run);
         }
 
+        private void AppletPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetCamera(DeviceManager.GetPreferredMediaCaptureDevice());
+        }
+
         private async void CaptureBtn_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            CameraPreview.Source.CapturePhoto(Config.Get<string>("photos_folder"));
             CameraPreview.Visibility = Visibility.Collapsed;
-            await Task.Delay(250);
+            await Task.Delay(50);
+            CameraPreview.Source.CapturePhoto(Config.Get<string>("photos_folder"));
+            await Task.Delay(200);
             CameraPreview.Visibility = Visibility.Visible;
         }
 
@@ -46,7 +53,7 @@ namespace VisuALS_WPF_App
             {
                 Dispatcher.Invoke(() =>
                 {
-                    CameraPreview.Source = mediaCaptureDevice;
+                    SetCamera(mediaCaptureDevice);
                 });
                 cameraSearchProcess.StopProcess();
             }
@@ -59,12 +66,81 @@ namespace VisuALS_WPF_App
             {
                 if (CameraPreview.Source == null)
                 {
-                    CameraPreview.Source = DeviceManager.GetPreferredMediaCaptureDevice();
+                    SetCamera(DeviceManager.GetPreferredMediaCaptureDevice());
                     return;
                 }
                 int currentIndex = devices.FindIndex(d => d.DeviceID == CameraPreview.Source.DeviceID);
                 int nextIndex = (currentIndex + 1) % devices.Count;
-                CameraPreview.Source = devices[nextIndex];
+                SetCamera(devices[nextIndex]);
+            }
+        }
+
+        private void FlashBtn_OptionSelected(object sender, RoutedEventArgs e)
+        {
+            if (((VToggle)sender).Value)
+            {
+                CameraPreviewBackground.Fill = System.Windows.Media.Brushes.White;
+            }
+            else
+            {
+                CameraPreviewBackground.Fill = System.Windows.Media.Brushes.Black;
+            }
+        }
+
+        private void SetCamera(MediaCaptureDevice device)
+        {
+            CameraPreview.Source = device;
+            SetFlash(device.GetFlash());
+        }
+
+        private void SetFlash(MediaCaptureDevice.FlashMode mode)
+        {
+            CameraPreview.Source.SetFlash(mode, true);
+            switch (mode)
+            {
+                case MediaCaptureDevice.FlashMode.On:
+                    FlashBtn.Content = "Flash On";
+                    break;
+                case MediaCaptureDevice.FlashMode.Off:
+                    FlashBtn.Content = "Flash Off";
+                    break;
+                case MediaCaptureDevice.FlashMode.Auto:
+                    FlashBtn.Content = "Flash Auto";
+                    break;
+            }
+            if (!CameraPreview.Source.FlashSupported())
+            {
+                if (mode == MediaCaptureDevice.FlashMode.On)
+                {
+                    CameraPreviewBackground.Fill = System.Windows.Media.Brushes.White;
+                }
+                else
+                {
+                    CameraPreviewBackground.Fill = System.Windows.Media.Brushes.Black;
+                }
+            }
+        }
+
+        private void FlashBtn_Click(object sender, RoutedEventArgs e)
+        {
+            switch(CameraPreview.Source.GetFlash())
+            {
+                case MediaCaptureDevice.FlashMode.On:
+                    SetFlash(MediaCaptureDevice.FlashMode.Off);
+                    break;
+                case MediaCaptureDevice.FlashMode.Off:
+                    if (CameraPreview.Source.FlashSupported())
+                    {
+                        SetFlash(MediaCaptureDevice.FlashMode.Auto);
+                    }
+                    else
+                    {
+                        SetFlash(MediaCaptureDevice.FlashMode.On);
+                    }
+                    break;
+                case MediaCaptureDevice.FlashMode.Auto:
+                    SetFlash(MediaCaptureDevice.FlashMode.On);
+                    break;
             }
         }
     }
