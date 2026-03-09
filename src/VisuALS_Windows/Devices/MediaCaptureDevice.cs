@@ -57,7 +57,7 @@ namespace VisuALS_WPF_App
                 StorageFolder folder = await StorageFolder.GetFolderFromPathAsync(Path.GetDirectoryName(path));
                 file = await folder.CreateFileAsync(Path.GetFileName(path), CreationCollisionOption.FailIfExists);
             }
-
+            
             await mediaCapture.CapturePhotoToStorageFileAsync(Windows.Media.MediaProperties.ImageEncodingProperties.CreateJpeg(), file);
         }
 

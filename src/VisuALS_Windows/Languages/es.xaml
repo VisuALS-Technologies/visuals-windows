@@ -315,6 +315,15 @@
     <system:String x:Key="pv_settings_title">Configuración del visor de fotos</system:String>
     <system:String x:Key="pv_photos_folder">Carpeta de fotos</system:String>
 
+    <!-- Camera -->
+    <system:String x:Key="cm_capture">Capturar</system:String>
+    <system:String x:Key="cm_swap_camera">Cambiar cámara</system:String>
+    <system:String x:Key="cm_settings_title">Configuración de la Cámara</system:String>
+    <system:String x:Key="cm_photos_folder" xml:space="preserve">Carpeta de Fotos: </system:String>
+
+    <!-- Camera Preview -->
+    <system:String x:Key="cm_no_camera">No se Encontró Ninguna Cámara</system:String>
+
     <!-- Old VisuALS File Migration -->
     <system:String x:Key="fm_cleanup_file_error" xml:space="preserve">Se produjo un error al intentar eliminar archivos antiguos.</system:String>
     <system:String x:Key="fm_copy_files?" xml:space="preserve">¿Quiere copiar sus frases, notas y otro contenido de VisuALS a la nueva versión?</system:String>
